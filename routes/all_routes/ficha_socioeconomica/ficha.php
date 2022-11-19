@@ -13,19 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/ficha-socioeconomica', function () {
+    return view('ficha_socioeconomica.index');
+})->name('ficha.index');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
 
-//Ficha Socioeconómica
-require __DIR__ . '/all_routes/ficha_socioeconomica/ficha.php';
