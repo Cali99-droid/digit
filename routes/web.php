@@ -26,3 +26,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+/** crear ficha */
+Route::get('/ficha/create', function () {
+    return view('ficha.create');
+});
