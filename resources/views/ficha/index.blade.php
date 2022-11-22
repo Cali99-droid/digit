@@ -31,22 +31,51 @@
 
                         </div>
 
-                        <div class="mt-3">
-                            <label for="default-search"
-                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                            <div class="relative">
-                                <!--<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                </div>-->
-                                <input type="search" id="default-search"
-                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Search Mockups, Logos..." required>
+                        <div class="flex">
+                            <div class="w-1/4
+                            p-4">
+                                <div class="flex items-center">
+                                    <span>Mostrar</span>
+                                    <select id="countries"
+                                        class="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected>10</option>
+                                        <option value="US">25</option>
+                                        <option value="CA">100</option>
+                                        <option value="FR">Todo</option>
+                                    </select>
+                                    <span>registros</span>
+                                </div>
+
                             </div>
+                            <div class="w-1/3 
+                            p-4">
+                                <div class="flex items-center">
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <input type="search" id="default-search"
+                                            class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Buscar ..." required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-1/3 p-4">
+                                <div class="flex items-end">
+                                    <button type="button"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Nuevo
+                                        Registro</button>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
 
@@ -76,6 +105,64 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Carlos Emilio Alvarado Robles
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            2022-I
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            C
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Hace 2 días
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <a href="#">Editar</a>
+                                            <a href="#" onclick="ejecutarAlert()">Eliminar</a>
+                                            <a href="#">Ver Todo</a>
+                                        </th>
+                                    </tr>
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Carlos Emilio Alvarado Robles
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            2022-I
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            C
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Hace 2 días
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <a href="#">Editar</a>
+                                            <a href="#" onclick="ejecutarAlert()">Eliminar</a>
+                                            <a href="#">Ver Todo</a>
+                                        </th>
+                                    </tr>
                                     <tr
                                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <th scope="row"
