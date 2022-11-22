@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class escuela extends Model
 {
-    use HasFactory;
+    protected $table="escuelas";
+    protected $fillable=['descripcion','facultades_id'];
 }
