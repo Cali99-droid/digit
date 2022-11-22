@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/ficha-socioeconomica', function () {
-    return view('ficha_socioeconomica.index');
+    return view('ficha.index');
 })->name('ficha.index');
 
 
