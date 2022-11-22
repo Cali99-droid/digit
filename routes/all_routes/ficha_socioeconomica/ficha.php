@@ -17,4 +17,7 @@ Route::get('/ficha-socioeconomica', function () {
     return view('ficha.index');
 })->name('ficha.index');
 
-
+/** crear ficha */
+Route::get('/ficha/create', function () {
+    return view('ficha.create');
+})->name('ficha.create');
