@@ -13,7 +13,7 @@
                     <x-jet-input class="block mt-1 w-full" type="text" wire:model="nombre" :value="old('nombre')"
                         placeholder="Nombres estudiante" />
                     @error('nombre')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -23,7 +23,7 @@
                     <x-jet-input id="apellido" class="block mt-1 w-full" type="text" wire:model="apellido"
                         :value="old('apellido')" placeholder="Apellidos estudiante" />
                     @error('apellido')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -33,7 +33,7 @@
                     <x-jet-input id="codigo" class="block mt-1 w-full" type="text" wire:model="codigo"
                         :value="old('codigo')" placeholder="Código estudiante" />
                     @error('codigo')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -43,7 +43,7 @@
                     <x-jet-input id="escuela" class="block mt-1 w-full" type="text" wire:model="escuela"
                         :value="old('escuela')" placeholder="Escuela" />
                     @error('escuela')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -54,7 +54,7 @@
                     <x-jet-input id="direccion" class="block mt-1 w-full" type="text" wire:model="direccion"
                         :value="old('direccion')" placeholder="Dirección estudiante" />
                     @error('direccion')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -64,17 +64,17 @@
                     <x-jet-input id="telefono" class="block mt-1 w-full" type="text" wire:model="telefono"
                         :value="old('telefono')" placeholder="Teléfono estudiante" />
                     @error('telefono')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
                 <div>
                     <x-jet-label for="dir" :value="__('Dirección Padre o tutor')" />
 
-                    <x-jet-input id="dir" class="block mt-1 w-full" type="text" wire:model="dir" :value="old('dir')"
-                        placeholder="Dirección Padre o tutor" />
+                    <x-jet-input id="dir" class="block mt-1 w-full" type="text" wire:model="dir"
+                        :value="old('dir')" placeholder="Dirección Padre o tutor" />
                     @error('dir')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -82,10 +82,10 @@
                 <div>
                     <x-jet-label for="tel" :value="__('Teléfono Padre o tutor')" />
 
-                    <x-jet-input id="tel" class="block mt-1 w-full" type="text" wire:model="tel" :value="old('tel')"
-                        placeholder="Teléfono Padre o tutor" />
+                    <x-jet-input id="tel" class="block mt-1 w-full" type="text" wire:model="tel"
+                        :value="old('tel')" placeholder="Teléfono Padre o tutor" />
                     @error('tel')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -101,10 +101,12 @@
                         <select id="item1" wire:model="item1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($procedencias as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item1')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -114,10 +116,12 @@
                         <select id="item2" wire:model="item2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($cargasFamiliares as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item2')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -127,10 +131,12 @@
                         <select id="item3" wire:model="item3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($orfandades as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item3')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -140,10 +146,12 @@
                         <select id="item4" wire:model="item4"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($situacion as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item4')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -154,10 +162,12 @@
                         <select id="item5" wire:model="item5"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($dependencias as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
 
                         </select> @error('item5')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -167,9 +177,11 @@
                         <select id="item6" wire:model="item6"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($pensiones as $pension)
+                                <option {{ $pension->id }}>{{ $pension->puntaje }}</option>
+                            @endforeach
                         </select> @error('item6')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
 
                     </div>
@@ -180,10 +192,12 @@
                         <select id="item7" wire:model="item7"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($viviendas as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
 
                         </select> @error('item7')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -204,7 +218,7 @@
 
                         <input type="date" id="fecha" wire:model="fecha">
                         @error('fecha')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
                     <div>
@@ -235,7 +249,7 @@
 
                         </select>
                         @error('ciclo')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
                     <div>
@@ -244,13 +258,16 @@
                         <select id="aitem1" wire:model="aitem1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @foreach ($creditosMatriculados as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
 
                         </select>
                         @error('aitem1')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -260,13 +277,16 @@
                         <select id="aitem2" wire:model="aitem2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @foreach ($creditosAprobados as $d)
+                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
 
                         </select>
                         @error('aitem2')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
