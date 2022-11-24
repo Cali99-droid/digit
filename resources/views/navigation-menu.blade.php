@@ -18,7 +18,7 @@
                     <x-jet-nav-link href="{{ route('ficha.index') }}" :active="request()->routeIs(['ficha.index','ficha.create'])">
                         {{ __('F. Socioeconómica') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('salud') }}" :active="request()->routeIs('salud')">
                         {{ __('Salud') }}
                     </x-jet-nav-link>
                 </div>
