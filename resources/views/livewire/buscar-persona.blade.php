@@ -17,10 +17,13 @@
                     </x-jet-button>
 
                 </div>
+
                 @error('codigob')
                 <livewire:mostrar-alerta :message='$message' />
 
                 @enderror
+
+
             </form>
         </div>
     </div>

@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\persona;
 use Livewire\Component;
 
 class CrearFicha extends Component
 {
     public $nombre;
-    public $apellido;
+    public $apellidoPat;
+    public $apellidoMat;
     public $codigo;
     public $escuela;
     public $direccion;
@@ -26,13 +28,17 @@ class CrearFicha extends Component
     public $ciclo;
     public $aitem1;
     public $aitem2;
+
+    public $estudiante;
     protected $listeners = ['terminosBusqueda' => 'buscar'];
     protected $rules = [
 
-        'apellido' => 'required|string',
+        'apellidoPat' => 'required|string',
+        'apellidoMat' => 'required|string',
         'nombre' => 'required|string',
         'codigo' => 'required|string', //unique:equipos
         'escuela' => 'required',
+        'direccion' => 'required',
         'telefono' => 'required|string',
         'item1' => 'required|string',
         'item2' => 'required|string',
@@ -56,11 +62,13 @@ class CrearFicha extends Component
     }
 
 
-
-
-
     public function buscar($codigo)
     {
+        $this->codigo = $codigo;
+        $this->estudiante = persona::where('codigo',  $this->codigo)->first();
+        if (!isset($this->estudiante)) {
+            session()->flash('mensaje', 'Estudiante no encontrado, rellene el siguiente formulario');
+        }
     }
     public function render()
     {
