@@ -30,8 +30,5 @@ Route::middleware([
     })->name('salud');
 });
 
-
-/** crear ficha */
-Route::get('/ficha/create', function () {
-    return view('ficha.create');
-});
+//Ficha Socioeconómica
+require __DIR__ . '/all_routes/ficha_socioeconomica/ficha.php';

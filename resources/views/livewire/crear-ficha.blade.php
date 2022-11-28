@@ -152,7 +152,9 @@
                         <select id="item1" wire:model="item1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($procedencias as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item1')
                         <livewire:mostrar-alerta :message="$message" />
@@ -165,7 +167,9 @@
                         <select id="item2" wire:model="item2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($cargasFamiliares as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item2')
                         <livewire:mostrar-alerta :message="$message" />
@@ -178,7 +182,9 @@
                         <select id="item3" wire:model="item3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($orfandades as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item3')
                         <livewire:mostrar-alerta :message="$message" />
@@ -191,7 +197,9 @@
                         <select id="item4" wire:model="item4"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($situacion as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                         </select>
                         @error('item4')
                         <livewire:mostrar-alerta :message="$message" />
@@ -205,7 +213,9 @@
                         <select id="item5" wire:model="item5"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($dependencias as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
 
                         </select> @error('item5')
                         <livewire:mostrar-alerta :message="$message" />
@@ -218,7 +228,9 @@
                         <select id="item6" wire:model="item6"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($pensiones as $pension)
+                            <option {{ $pension->id }}>{{ $pension->puntaje }}</option>
+                            @endforeach
                         </select> @error('item6')
                         <livewire:mostrar-alerta :message="$message" />
                         @enderror
@@ -231,7 +243,9 @@
                         <select id="item7" wire:model="item7"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
-
+                            @foreach ($viviendas as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
 
                         </select> @error('item7')
                         <livewire:mostrar-alerta :message="$message" />
@@ -295,6 +309,9 @@
                         <select id="aitem1" wire:model="aitem1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @foreach ($creditosMatriculados as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
@@ -311,6 +328,9 @@
                         <select id="aitem2" wire:model="aitem2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @foreach ($creditosAprobados as $d)
+                            <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                            @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
