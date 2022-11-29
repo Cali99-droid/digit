@@ -18,12 +18,10 @@ return new class extends Migration
             $table->date('fecha'); //Fecha en que registraron en físico los documentos
             $table->text('observacion');
             $table->integer('puntaje_total');
-            
+
             $table->unsignedBigInteger('persona_id');
             $table->foreign('persona_id')->references('id')->on('personas');
 
-
-            
             $table->unsignedBigInteger('procedencia_id');
             $table->foreign('procedencia_id')->references('id')->on('procedencias');
 

@@ -16,6 +16,13 @@ use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
 
 class CrearFicha extends Component
 {
+
+    public $ficha = false;
+    public $total;
+    public $totalAca;
+    public $totalEc;
+    public $clasificacion;
+
     public $nombre;
     public $apellidoPat;
     public $apellidoMat;
@@ -37,11 +44,11 @@ class CrearFicha extends Component
     public $ciclo;
     public $aitem1;
     public $aitem2;
+    public $bool = false;
 
     public $estudiante;
     protected $listeners = ['terminosBusqueda' => 'buscar'];
     protected $rules = [
-
         'apellidoPat' => 'required|string',
         'apellidoMat' => 'required|string',
         'nombre' => 'required|string',
@@ -49,16 +56,16 @@ class CrearFicha extends Component
         'escuela' => 'required',
         'direccion' => 'required',
         'telefono' => 'required|string',
-        'item1' => 'required|string',
-        'item2' => 'required|string',
-        'item3' => 'required|string',
-        'item4' => 'required|string',
-        'item5' => 'required|string',
-        'item6' => 'required|string',
-        'item7' => 'required|string',
+        'item1' => 'required|not_in:0',
+        'item2' => 'required|not_in:0',
+        'item3' => 'required|not_in:0',
+        'item4' => 'required|not_in:0',
+        'item5' => 'required|not_in:0',
+        'item6' => 'required|not_in:0',
+        'item7' => 'required|not_in:0',
         'fecha' => 'required',
-        'aitem1' => 'required|string',
-        'aitem2' => 'required|string',
+        'aitem1' => 'required|not_in:0',
+        'aitem2' => 'required|not_in:0',
 
     ];
 
@@ -66,8 +73,32 @@ class CrearFicha extends Component
 
     public function crearFicha()
     {
+        $datos = $this->validate();
 
-        $datos =   $this->validate();
+        $this->ficha = true;
+        //sacar el total de puntos por ev socioeconomica
+        $this->totalEc = $datos['item1'] + $datos['item2'] + $datos['item3'] + $datos['item4'] + $datos['item5'] + $datos['item6'] + $datos['item7'];
+
+        //sacar puntaje total por ev academica
+        $this->totalAca = $datos['aitem1'] + $datos['aitem2'];
+        // determinar la clasificacion
+
+        $this->total =  $this->totalAca +  $this->totalEc;
+
+        switch ($this->total) {
+            case  $this->total <= 150:
+                $this->clasificacion = 'A';
+                break;
+            case  $this->total > 150 &&  $this->total <= 162:
+                $this->clasificacion = 'B';
+                break;
+            case  $this->total > 162 &&  $this->total <= 190:
+                $this->clasificacion = 'C';
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
 
@@ -75,8 +106,24 @@ class CrearFicha extends Component
     {
         $this->codigo = $codigo;
         $this->estudiante = persona::where('codigo',  $this->codigo)->first();
+
+
         if (!isset($this->estudiante)) {
+
             session()->flash('mensaje', 'Estudiante no encontrado, rellene el siguiente formulario');
+            $this->nombre = null;
+            $this->bool = false;
+        } else {
+            $this->nombre = $this->estudiante->nombres;
+            $this->apellidoPat = $this->estudiante->apellidoPa;
+            $this->apellidoMat = $this->estudiante->apellidoMa;
+            $this->escuela = $this->estudiante->escuelas_id;
+            $this->direccion = $this->estudiante->direccion;
+            $this->telefono = $this->estudiante->telefono;
+            $this->dir = $this->estudiante->direccion_tutor;
+            $this->tel = $this->estudiante->telefono_tutor;
+
+            $this->bool = true;
         }
     }
     public function render()

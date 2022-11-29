@@ -27,85 +27,26 @@
     </div>
     @endif
     <div>
+        {{-- wire:submit.prevent='crearFicha' --}}
         <form class="w-full" wire:submit.prevent='crearFicha'>
             <div>
                 <h3 class="text-sky-500 font-bold text-lg ">Datos del Estudiante</h3>
             </div>
 
-
-
             <div class="grid grid-cols-4 gap-3 p-3 border border-sky-500 rounded-lg mb-3 bg-sky-50">
 
-                @if ($estudiante)
-                <p class="font-bold ">Nombre: <span class="text-gray-500 text-sm">{{$estudiante->nombres .' ' .
+                {{-- @if ($estudiante)
+
+                <p class=" font-bold ">Nombre: <span class=" text-gray-500 text-sm">{{$estudiante->nombres .' ' .
                         $estudiante->apellidoPa .' ' . $estudiante->apellidoMa}}</span></p>
                 <p class="font-bold ">Código: <span class="text-gray-500 text-sm">{{$estudiante->codigo}}</span>
                 </p>
                 <p class="font-bold ">DNI: <span class="text-gray-500 text-sm">{{$estudiante->DNI}}</span></p>
                 <p class="font-bold ">Dirección: <span class="text-gray-500 text-sm">{{$estudiante->direccion}}
                     </span></p>
-                @else
-                <div>
-                    <x-jet-label for="nombre" :value="__('Nombres')" />
 
-                    <x-jet-input class="block mt-1 w-full" type="text" wire:model="nombre" :value="old('nombre')"
-                        placeholder="Nombres estudiante" />
-                    @error('nombre')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
-
-                <div>
-                    <x-jet-label for="apellidoPat" :value="__('Apellido Paterno')" />
-
-                    <x-jet-input id="apellidoPat" class="block mt-1 w-full" type="text" wire:model="apellidoPat"
-                        :value="old('apellidoPat')" placeholder="Apellido paterno " />
-                    @error('apellidoPat')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
-
-                <div>
-                    <x-jet-label for="apellidoMat" :value="__('Apellido Materno')" />
-
-                    <x-jet-input id="apellidoMat" class="block mt-1 w-full" type="text" wire:model="apellidoMat"
-                        :value="old('apellidoMat')" placeholder="Apellidos materno" />
-                    @error('apellidoMat')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
-
-
-                <div>
-                    <x-jet-label for="codigo" :value="__('Código')" />
-
-                    <x-jet-input id="codigo" class="block mt-1 w-full" type="text" wire:model="codigo"
-                        :value="old('codigo')" placeholder="Código estudiante" />
-                    @error('codigo')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
-
-                <div>
-                    <x-jet-label for="escuela" :value="__('Escuela')" />
-
-                    <x-jet-input id="escuela" class="block mt-1 w-full" type="text" wire:model="escuela"
-                        :value="old('escuela')" placeholder="Escuela" />
-                    @error('escuela')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
-
-
-                <div>
-                    <x-jet-label for="direccion" :value="__('Dirección ')" />
-
-                    <x-jet-input id="direccion" class="block mt-1 w-full" type="text" wire:model="direccion"
-                        :value="old('direccion')" placeholder="Dirección estudiante" />
-                    @error('direccion')
-                    <livewire:mostrar-alerta :message="$message" />
-                    @enderror
-                </div>
+                @if ($estudiante->telefono === null || $estudiante->direccion_tutor === null ||
+                $estudiante->telefono_tutor === null)
 
                 <div>
                     <x-jet-label for="telefono" :value="__('Teléfono ')" />
@@ -137,7 +78,112 @@
                     <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
+                @else
+
+                <p class="font-bold ">Teléfono estudiante: <span
+                        class="text-gray-500 text-sm">{{$estudiante->telefono}}</span>
+                </p>
+                <p class="font-bold ">Dirección Padre o tutor: <span
+                        class="text-gray-500 text-sm">{{$estudiante->direccion_tutor}}</span></p>
+                <p class="font-bold ">Teléfono Padre o tutor: <span
+                        class="text-gray-500 text-sm">{{$estudiante->telefono_tutor}}
+                    </span></p>
                 @endif
+                @else --}}
+                <div>
+                    <x-jet-label for="nombre" :value="__('Nombres')" />
+
+                    <input {{ $bool ? 'disabled' : '' }}
+                        class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        type="text" wire:model="nombre" :value="old('nombre')" placeholder="Nombres estudiante" />
+                    @error('nombre')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+                <div>
+                    <x-jet-label for="apellidoPat" :value="__('Apellido Paterno')" />
+
+                    <input {{ $bool ? 'disabled' : '' }} id="apellidoPat" class="block mt-1 w-full" type="text"
+                        wire:model="apellidoPat" :value="old('apellidoPat')" placeholder="Apellido paterno " />
+                    @error('apellidoPat')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+                <div>
+                    <x-jet-label for="apellidoMat" :value="__('Apellido Materno')" />
+
+                    <input {{ $bool ? 'disabled' : '' }} id="apellidoMat" class="block mt-1 w-full" type="text"
+                        wire:model="apellidoMat" :value="old('apellidoMat')" placeholder="Apellidos materno" />
+                    @error('apellidoMat')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+
+                <div>
+                    <x-jet-label for="codigo" :value="__('Código')" />
+
+                    <input {{ $bool ? 'disabled' : '' }} id="codigo" class="block mt-1 w-full" type="text"
+                        wire:model="codigo" :value="old('codigo')" placeholder="Código estudiante" />
+                    @error('codigo')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+                <div>
+                    <x-jet-label for="escuela" :value="__('Escuela')" />
+
+                    <input {{ $bool ? 'disabled' : '' }} id="escuela" class="block mt-1 w-full" type="text"
+                        wire:model="escuela" :value="old('escuela')" placeholder="Escuela" />
+                    @error('escuela')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+
+                <div>
+                    <x-jet-label for="direccion" :value="__('Dirección ')" />
+
+                    <input {{ $bool ? 'disabled' : '' }} id="direccion" class="block mt-1 w-full" type="text"
+                        wire:model="direccion" :value="old('direccion')" placeholder="Dirección estudiante" />
+                    @error('direccion')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+                <div>
+                    <x-jet-label for="telefono" :value="__('Teléfono ')" />
+
+                    <input id="telefono" class="block mt-1 w-full" type="text" wire:model="telefono"
+                        :value="old('telefono')" placeholder="Teléfono estudiante" />
+                    @error('telefono')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+                <div>
+                    <x-jet-label for="dir" :value="__('Dirección Padre o tutor')" />
+
+                    <input id="dir" class="block mt-1 w-full " type="text" wire:model="dir" :value="old('dir')"
+                        placeholder="Dirección Padre o tutor" />
+                    @error('dir')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+
+
+                <div>
+                    <x-jet-label for="tel" :value="__('Teléfono Padre o tutor')" />
+
+                    <input id="tel" class="block mt-1 w-full" type="text" wire:model="tel" :value="old('tel')"
+                        placeholder="Teléfono Padre o tutor" />
+                    @error('tel')
+                    <livewire:mostrar-alerta :message="$message" />
+                    @enderror
+                </div>
+                {{-- @endif --}}
             </div>
 
 
@@ -151,7 +197,7 @@
 
                         <select id="item1" wire:model="item1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-                            <option selected>-- Seleccione --</option>
+                            <option value="" selected>-- Seleccione --</option>
                             @foreach ($procedencias as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -166,7 +212,7 @@
 
                         <select id="item2" wire:model="item2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option value="" selected>-- Seleccione --</option>
                             @foreach ($cargasFamiliares as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -181,7 +227,7 @@
 
                         <select id="item3" wire:model="item3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option value="" selected>-- Seleccione --</option>
                             @foreach ($orfandades as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -196,7 +242,7 @@
 
                         <select id="item4" wire:model="item4"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option value="" selected>-- Seleccione --</option>
                             @foreach ($situacion as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -212,7 +258,7 @@
 
                         <select id="item5" wire:model="item5"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option value="" selected>-- Seleccione --</option>
                             @foreach ($dependencias as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -227,7 +273,7 @@
 
                         <select id="item6" wire:model="item6"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             @foreach ($pensiones as $pension)
                             <option {{ $pension->id }}>{{ $pension->puntaje }}</option>
                             @endforeach
@@ -242,7 +288,7 @@
 
                         <select id="item7" wire:model="item7"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             @foreach ($viviendas as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -257,7 +303,7 @@
 
                         <select id="sisfho" wire:model="sisfho"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
@@ -293,7 +339,7 @@
 
                         <select id="ciclo" wire:model='ciclo'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
@@ -308,7 +354,7 @@
 
                         <select id="aitem1" wire:model="aitem1"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             @foreach ($creditosMatriculados as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -327,7 +373,7 @@
 
                         <select id="aitem2" wire:model="aitem2"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>-- Seleccione --</option>
+                            <option selected value="">-- Seleccione --</option>
                             @foreach ($creditosAprobados as $d)
                             <option {{ $d->id }}>{{ $d->puntaje }}</option>
                             @endforeach
@@ -348,6 +394,7 @@
 
             </div>
             <div class="mt-3 flex justify-center">
+                {{-- wire:click="crearFicha" type="button" --}}
                 <x-jet-button class="bg-cyan-800">
                     Guardar Ficha
                 </x-jet-button>
@@ -355,4 +402,31 @@
 
         </form>
     </div>
+
+
+    <x-jet-dialog-modal wire:model="ficha">
+        <x-slot name="title">
+            {{ __('Delete Account') }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('Resumen') }}
+            <p>Clasificacion: {{$clasificacion ?? ''}}</p>
+            <p>Total Academico: {{$totalAca ?? ''}}</p>
+            <p>Total Socio: {{$totalEc ?? ''}}</p>
+            <p>Total : {{$total ?? ''}}</p>
+
+        </x-slot>
+
+        <x-slot name="footer">
+            {{-- wire:click="$toggle('confirmingUserDeletion')" --}}
+            <x-jet-secondary-button wire:click="$toggle('ficha')" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+
+            <x-jet-danger-button class="ml-3" wire:click="deleteUser" wire:loading.attr="disabled">
+                {{ __('Confirmar') }}
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>
