@@ -29,6 +29,9 @@ FICHA SOCIOECONÓMICA
     ** ->10.- Semestres
     php artisan make:model Semestres -m 
 
+    ** ->11.- Clasificaciones Socioeconómicas (SISFOH)
+    php artisan make:model ClasificacionesSocioeconomicas -m 
+
 
     --> TABLE FICHA
         FICHAS SOCIOECONÓMICAS

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ficha_Socioeconomica\CargasFamiliares;
+use App\Models\Ficha_Socioeconomica\ClasificacionesSocioeconomicas;
 use App\Models\Ficha_Socioeconomica\CreditosAprobados;
 use App\Models\Ficha_Socioeconomica\CreditosMatriculados;
 use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
@@ -80,11 +81,12 @@ class CrearFicha extends Component
         $dependencias = DependenciasEconomicas::all();
         $pensiones = PensionesMensuales::all();
         $viviendas = Viviendas::all();
+        $clasificacionesSocioeconomicas = ClasificacionesSocioeconomicas::all();
 
         $creditosMatriculados = CreditosMatriculados::all();
         $creditosAprobados = CreditosAprobados::all();
         return view('livewire.crear-ficha', compact('procedencias','cargasFamiliares','orfandades',
                                             'situacion','dependencias','pensiones','viviendas',
-                                            'creditosMatriculados', 'creditosAprobados'));
+                                            'creditosMatriculados', 'creditosAprobados', 'clasificacionesSocioeconomicas'));
     }
 }

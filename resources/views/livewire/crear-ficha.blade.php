@@ -102,7 +102,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($procedencias as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item1')
@@ -117,7 +117,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($cargasFamiliares as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item2')
@@ -132,7 +132,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($orfandades as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item3')
@@ -147,7 +147,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($situacion as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item4')
@@ -163,7 +163,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($dependencias as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
 
                         </select> @error('item5')
@@ -178,7 +178,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($pensiones as $pension)
-                                <option {{ $pension->id }}>{{ $pension->puntaje }}</option>
+                                <option value="{{ $pension->id }}">{{ $pension->puntaje }}</option>
                             @endforeach
                         </select> @error('item6')
                             <livewire:mostrar-alerta :message="$message" />
@@ -193,7 +193,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($viviendas as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
 
                         </select> @error('item7')
@@ -202,11 +202,14 @@
                     </div>
 
                     <div>
-                        <x-jet-label for="sisfho" :value="__('8. Clasificación SISFHO(opcional)')" />
+                        <x-jet-label for="sisfho" :value="__('8. Clasificación SISFOH(opcional)')" />
 
                         <select id="sisfho" wire:model="sisfho"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @foreach ($clasificacionesSocioeconomicas as $cs)
+                                <option value="{{$cs->id}}">{{$cs->nombre}}</option>
+                            @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
@@ -243,6 +246,9 @@
                         <select id="ciclo" wire:model='ciclo'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
                             @enderror --}}
@@ -259,7 +265,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($creditosMatriculados as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
@@ -278,7 +284,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>-- Seleccione --</option>
                             @foreach ($creditosAprobados as $d)
-                                <option {{ $d->id }}>{{ $d->puntaje }}</option>
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />

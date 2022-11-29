@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Ficha_Socioeconomica\CargasFamiliares;
+use App\Models\Ficha_Socioeconomica\ClasificacionesSocioeconomicas;
 use App\Models\Ficha_Socioeconomica\CreditosAprobados;
 use App\Models\Ficha_Socioeconomica\CreditosMatriculados;
 use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
@@ -210,10 +211,43 @@ class ItemsFichaSeeder extends Seeder
         ]);
         
 
-        /*Semestres::create([
-            'name' => 'Más de 20 créditos',
-            'puntaje' => 20
-        ]);*/
+        Semestres::create([
+            'nombre' => '2017-I'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2017-II'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2018-I'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2018-II'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2019-I'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2019-II'
+        ]);
+
+
+
+        ClasificacionesSocioeconomicas::create([
+            'nombre' => 'Pobre Extremo'
+        ]);
+
+        ClasificacionesSocioeconomicas::create([
+            'nombre' => 'Pobre'
+        ]);
+
+        ClasificacionesSocioeconomicas::create([
+            'nombre' => 'No Pobre'
+        ]);
 
         
     }
