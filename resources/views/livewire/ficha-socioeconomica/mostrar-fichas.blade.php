@@ -111,7 +111,7 @@
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <a href="#">Editar</a>
-                            <a href="#" onclick="ejecutarAlert()">Eliminar</a>
+                            <a href="#" wire:click="deleteConfirm({{$f->idFicha}})">Eliminar Ficha</a>
                             
                             <a href="{{ route('ficha.detalle', $f->id) }}">Ver Todo</a>
                         </th>
@@ -121,4 +121,20 @@
             </tbody>
         </table>
     </div>
+    <script>
+        window.addEventListener('swal-confirm', event => {
+            Swal.fire({
+                title: event.detail.title,
+                icon: event.detail.icon,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, quiero eliminarlo!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emitTo('ficha-socioeconomica.mostrar-fichas','delete', event.detail.id);
+                }
+            })
+        })
+    </script>
 </div>
