@@ -40,3 +40,11 @@ FICHA SOCIOECONÓMICA
     
     
     --> php artisan make:seeder ItemsFichaSeeder
+
+
+
+
+    LIVEWIRE
+     php artisan make:livewire FichaSocioeconomica/MostrarFichas
+     
+     php artisan make:livewire FichaSocioeconomica/MostrarDetalleFichas

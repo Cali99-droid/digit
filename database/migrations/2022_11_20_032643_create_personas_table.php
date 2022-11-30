@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('apellidoPa');
             $table->string('apellidoMa');
             $table->string('nombres');
-            $table->string('sexo');
+            $table->string('sexo')->default('MASCULINO');
             $table->date('fechaNac');
             $table->string('lugarNac');
             $table->string('estadoCivil');

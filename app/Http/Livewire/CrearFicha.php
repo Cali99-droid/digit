@@ -202,6 +202,7 @@ class CrearFicha extends Component
                 'nombres' => $datos['nombre'],
                 'apellidoPa' => $datos['apellidoPat'],
                 'apellidoMa' => $datos['apellidoMat'],
+                'sexo' => 'MASCULINO',
                 'codigo' => $datos['codigo'],
                 'direccion' => $datos['direccion'],
                 'escuelas_id' => $datos['escuela'],

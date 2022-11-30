@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Ficha_Socioeconomica\FichaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/ficha-socioeconomica', function () {
     return view('ficha.index');
-})->name('ficha.index');
+})->name('ficha.index')->middleware('auth');
 
 /** crear ficha */
 Route::get('/ficha-socioeconomica/create', function () {
     return view('ficha.create');
-})->name('ficha.create');
+})->name('ficha.create')->middleware('auth');
+
+Route::get('/ficha-socioeconomica/{id}', [FichaController::class, 'mostrarDetalleAlumno'])->middleware(['auth'])->name('ficha.detalle');
