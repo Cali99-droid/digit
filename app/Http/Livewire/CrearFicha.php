@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\escuela;
 use App\Models\persona;
 use Livewire\Component;
 use App\Models\Ficha_Socioeconomica\Viviendas;
@@ -14,15 +15,20 @@ use App\Models\Ficha_Socioeconomica\PensionesMensuales;
 use App\Models\Ficha_Socioeconomica\CreditosMatriculados;
 use App\Models\Ficha_Socioeconomica\SituacionesEconomicas;
 use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
+use App\Models\Ficha_Socioeconomica\Fichas;
+use App\Models\Ficha_Socioeconomica\Semestres;
 
 class CrearFicha extends Component
 {
-
+    public $bool = false;
     public $ficha = false;
     public $total;
     public $totalAca;
     public $totalEc;
     public $clasificacion;
+
+
+    public $estudiante;
 
     public $nombre;
     public $apellidoPat;
@@ -45,16 +51,16 @@ class CrearFicha extends Component
     public $ciclo;
     public $aitem1;
     public $aitem2;
-    public $bool = false;
+    public $sisfho;
+    public $semestre;
 
-    public $estudiante;
     protected $listeners = ['terminosBusqueda' => 'buscar'];
     protected $rules = [
         'apellidoPat' => 'required|string',
         'apellidoMat' => 'required|string',
         'nombre' => 'required|string',
-        'codigo' => 'required|string', //unique:equipos
-        'escuela' => 'required',
+        'codigo' => 'required|string', //|unique:personas
+        'escuela' => 'required|not_in:0',
         'direccion' => 'required',
         'telefono' => 'required|string',
         'item1' => 'required|not_in:0',
@@ -67,6 +73,13 @@ class CrearFicha extends Component
         'fecha' => 'required',
         'aitem1' => 'required|not_in:0',
         'aitem2' => 'required|not_in:0',
+        'semestre' => 'required|not_in:0',
+        'ciclo' => 'integer|between:1,12',
+        'obs' => '',
+        'sisfho' => '',
+        'dir' => '',
+        'tel' => '',
+
 
     ];
 
@@ -74,14 +87,26 @@ class CrearFicha extends Component
 
     public function crearFicha()
     {
+
         $datos = $this->validate();
 
+        // dd($datos);
         $this->ficha = true;
         //sacar el total de puntos por ev socioeconomica
-        $this->totalEc = $datos['item1'] + $datos['item2'] + $datos['item3'] + $datos['item4'] + $datos['item5'] + $datos['item6'] + $datos['item7'];
+        $item1 = Procedencias::find($datos['item1']);
+        $item2 = CargasFamiliares::find($datos['item2']);
+        $item3 = Orfandades::find($datos['item3']);
+        $item4 = SituacionesEconomicas::find($datos['item4']);
+        $item5 = DependenciasEconomicas::find($datos['item5']);
+        $item6 = PensionesMensuales::find($datos['item6']);
+        $item7 = Viviendas::find($datos['item7']);
+        $this->totalEc = $item1->puntaje + $item2->puntaje + $item3->puntaje + $item4->puntaje + $item5->puntaje + $item6->puntaje + $item7->puntaje;
 
         //sacar puntaje total por ev academica
-        $this->totalAca = $datos['aitem1'] + $datos['aitem2'];
+        $aitem1 = CreditosMatriculados::find($datos['aitem1']);
+        $aitem2 = CreditosAprobados::find($datos['aitem2']);
+
+        $this->totalAca = $aitem1->puntaje + $aitem2->puntaje;
         // determinar la clasificacion
 
         $this->total =  $this->totalAca +  $this->totalEc;
@@ -127,6 +152,91 @@ class CrearFicha extends Component
             $this->bool = true;
         }
     }
+
+    public function saveFicha()
+    {
+
+        $datos = $this->validate();
+        if ($datos['obs'] === null) {
+            $datos['obs'] = '';
+        }
+        if ($datos['sisfho'] === '') {
+            $datos['sisfho'] = null;
+        }
+
+        // !validar que un estudiante tenga solo una ficha por semestre
+        if ($this->bool) {
+            $ficha = Fichas::where('persona_id', $this->estudiante->id)->where('semestre_id', $datos['semestre'])->first();
+
+            if ($ficha) {
+
+                session()->flash('mensaje-ficha', 'El estudiante ya tiene una ficha en este semestre');
+
+                return;
+            }
+
+            Fichas::create([
+                'ciclo_academico' => $datos['ciclo'],
+                'fecha' => $datos['fecha'],
+                'observacion' => $datos['obs'] ?? null,
+                'puntaje_total' => $this->total,
+                'persona_id' => $this->estudiante->id,
+                'procedencia_id' => $datos['item1'],
+                'carga_familiar_id' => $datos['item2'],
+                'orfandad_id' => $datos['item3'],
+                'situacion_economica_id' => $datos['item4'],
+                'dependencia_economica_id' => $datos['item5'],
+                'pension_mensual_id' => $datos['item6'],
+                'vivienda_id' => $datos['item7'],
+                'clasificacion_socioeconomica_id' => $datos['sisfho'] ?? null,
+                'credito_matriculado_id' => $datos['aitem1'],
+                'credito_aprobado_id' => $datos['aitem2'],
+                'semestre_id' => $datos['semestre'],
+            ]);
+            $this->ficha = false;
+            session()->flash('mensaje-ok', 'Ficha guardada correctamente');
+            return redirect()->route('ficha.create');
+        } else {
+            //crear nuevo estudiante
+            persona::create([
+                'nombres' => $datos['nombre'],
+                'apellidoPa' => $datos['apellidoPat'],
+                'apellidoMa' => $datos['apellidoMat'],
+                'codigo' => $datos['codigo'],
+                'direccion' => $datos['direccion'],
+                'escuelas_id' => $datos['escuela'],
+                'telefono' => $datos['telefono'],
+                'direccion_tutor' => $datos['dir'],
+                'telefono_tutor' => $datos['tel'],
+
+            ]);
+            //recuperar id
+            $est = persona::latest('id')->first();
+
+            //crear ficha 
+            Fichas::create([
+                'ciclo_academico' => $datos['ciclo'],
+                'fecha' => $datos['fecha'],
+                'observacion' => $datos['obs'] ?? null,
+                'puntaje_total' => $this->total,
+                'persona_id' => $est->id,
+                'procedencia_id' => $datos['item1'],
+                'carga_familiar_id' => $datos['item2'],
+                'orfandad_id' => $datos['item3'],
+                'situacion_economica_id' => $datos['item4'],
+                'dependencia_economica_id' => $datos['item5'],
+                'pension_mensual_id' => $datos['item6'],
+                'vivienda_id' => $datos['item7'],
+                'clasificacion_socioeconomica_id' => $datos['sisfho'] ?? null,
+                'credito_matriculado_id' => $datos['aitem1'],
+                'credito_aprobado_id' => $datos['aitem2'],
+                'semestre_id' => $datos['semestre'],
+            ]);
+
+            session()->flash('mensaje-ok', 'Ficha y Estudiante guardada correctamente');
+            return redirect()->route('ficha.create');
+        }
+    }
     public function render()
     {
         $procedencias = Procedencias::all();
@@ -140,6 +250,10 @@ class CrearFicha extends Component
 
         $creditosMatriculados = CreditosMatriculados::all();
         $creditosAprobados = CreditosAprobados::all();
+
+        $semestres = Semestres::all();
+        $escuelas = escuela::all();
+
         return view('livewire.crear-ficha', compact(
             'procedencias',
             'cargasFamiliares',
@@ -149,7 +263,10 @@ class CrearFicha extends Component
             'pensiones',
             'viviendas',
             'creditosMatriculados',
-            'creditosAprobados'
+            'creditosAprobados',
+            'clasificacionesSocioeconomicas',
+            'semestres',
+            'escuelas'
         ));
     }
 }
