@@ -8,6 +8,7 @@ use App\Models\Ficha_Socioeconomica\Viviendas;
 use App\Models\Ficha_Socioeconomica\Orfandades;
 use App\Models\Ficha_Socioeconomica\Procedencias;
 use App\Models\Ficha_Socioeconomica\CargasFamiliares;
+use App\Models\Ficha_Socioeconomica\ClasificacionesSocioeconomicas;
 use App\Models\Ficha_Socioeconomica\CreditosAprobados;
 use App\Models\Ficha_Socioeconomica\PensionesMensuales;
 use App\Models\Ficha_Socioeconomica\CreditosMatriculados;
@@ -135,6 +136,7 @@ class CrearFicha extends Component
         $dependencias = DependenciasEconomicas::all();
         $pensiones = PensionesMensuales::all();
         $viviendas = Viviendas::all();
+        $clasificacionesSocioeconomicas = ClasificacionesSocioeconomicas::all();
 
         $creditosMatriculados = CreditosMatriculados::all();
         $creditosAprobados = CreditosAprobados::all();
