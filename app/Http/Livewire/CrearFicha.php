@@ -17,6 +17,7 @@ use App\Models\Ficha_Socioeconomica\SituacionesEconomicas;
 use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
 use App\Models\Ficha_Socioeconomica\Fichas;
 use App\Models\Ficha_Socioeconomica\Semestres;
+use Faker\Provider\ar_EG\Person;
 
 class CrearFicha extends Component
 {
@@ -62,7 +63,7 @@ class CrearFicha extends Component
         'codigo' => 'required|string', //|unique:personas
         'escuela' => 'required|not_in:0',
         'direccion' => 'required',
-        'telefono' => 'required|string',
+        'telefono' => 'numeric|required',
         'item1' => 'required|not_in:0',
         'item2' => 'required|not_in:0',
         'item3' => 'required|not_in:0',
@@ -78,7 +79,7 @@ class CrearFicha extends Component
         'obs' => '',
         'sisfho' => '',
         'dir' => '',
-        'tel' => '',
+        'tel' => 'numeric',
 
 
     ];
@@ -164,7 +165,7 @@ class CrearFicha extends Component
             $datos['sisfho'] = null;
         }
 
-        // !validar que un estudiante tenga solo una ficha por semestre
+        // valida que un estudiante tenga solo una ficha por semestre
         if ($this->bool) {
             $ficha = Fichas::where('persona_id', $this->estudiante->id)->where('semestre_id', $datos['semestre'])->first();
 
@@ -175,6 +176,9 @@ class CrearFicha extends Component
                 return;
             }
 
+            $this->estudiante->direccion_tutor =  $datos['dir'];
+            $this->estudiante->telefono_tutor  =  $datos['tel'];
+            $this->estudiante->save();
             Fichas::create([
                 'ciclo_academico' => $datos['ciclo'],
                 'fecha' => $datos['fecha'],
@@ -197,6 +201,13 @@ class CrearFicha extends Component
             session()->flash('mensaje-ok', 'Ficha guardada correctamente');
             return redirect()->route('ficha.create');
         } else {
+
+            //validar codigo
+            $estudiante = persona::where('codigo', $datos['codigo'])->first();
+            if ($estudiante) {
+                session()->flash('mensaje-ficha', 'El código del estudiante no se puede repetir');
+                return;
+            }
             //crear nuevo estudiante
             persona::create([
                 'nombres' => $datos['nombre'],

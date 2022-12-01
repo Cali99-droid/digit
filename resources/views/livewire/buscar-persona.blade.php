@@ -1,6 +1,6 @@
 <div>
-    <div class="flex items-center justify-center">
-        <div class="p-3 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+    <div class="flex items-center justify-start">
+        <div class="p-3 ">
             <form method="GET" wire:submit.prevent='leerDatosFormulario' novalidate>
                 @csrf
                 @method('PUT')
@@ -12,8 +12,14 @@
                             placeholder="Ingrese código del estudiante" :value="old('codigo')" required autofocus />
 
                     </div>
-                    <x-jet-button class=" h-10 bg-cyan-800 ">
+                    <x-jet-button class=" h-10 bg-blue-700 ">
                         {{ __('Continuar') }}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+
                     </x-jet-button>
 
                 </div>
