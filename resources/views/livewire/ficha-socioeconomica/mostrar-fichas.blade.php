@@ -110,7 +110,7 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="#">Editar</a>
+                            <a href="{{ route('ficha.editar', [$f->id, $f->idFicha]) }}">Editar</a>
                             <a href="#" wire:click="deleteConfirm({{$f->idFicha}})">Eliminar Ficha</a>
                             
                             <a href="{{ route('ficha.detalle', $f->id) }}">Ver Todo</a>

@@ -23,4 +23,5 @@ Route::get('/ficha-socioeconomica/create', function () {
     return view('ficha.create');
 })->name('ficha.create')->middleware('auth');
 
+Route::get('/ficha-socioeconomica/editar/{persona}/{ficha}', [FichaController::class, 'editar'])->name('ficha.editar')->middleware('auth');
 Route::get('/ficha-socioeconomica/{id}', [FichaController::class, 'mostrarDetalleAlumno'])->middleware(['auth'])->name('ficha.detalle');

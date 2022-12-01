@@ -46,5 +46,7 @@ FICHA SOCIOECONÓMICA
 
     LIVEWIRE
      php artisan make:livewire FichaSocioeconomica/MostrarFichas
+
+     php artisan make:livewire FichaSocioeconomica/EditarFichas
      
      php artisan make:livewire FichaSocioeconomica/MostrarDetalleFichas
