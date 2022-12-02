@@ -138,7 +138,14 @@ class CrearFicha extends Component
         if (!isset($this->estudiante)) {
 
             session()->flash('mensaje', 'Estudiante no encontrado, rellene el siguiente formulario');
-            $this->nombre = null;
+            $this->nombre = '';
+            $this->apellidoPat = '';
+            $this->apellidoMat = '';
+            $this->escuela = '';
+            $this->direccion = '';
+            $this->telefono = '';
+            $this->dir = '';
+            $this->tel = '';
             $this->bool = false;
         } else {
             $this->nombre = $this->estudiante->nombres;

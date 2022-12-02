@@ -211,27 +211,38 @@ class EditarFichas extends Component
 
             return;
         }*/
+        $personas = persona::findOrFail($this->IdPersona);
+        $personas->apellidoPa = $datos['apellidoPat'];
+        $personas->apellidoMa = $datos['apellidoMat'];
+        $personas->nombres = $datos['nombre'];
+        $personas->codigo = $datos['codigo'];
+        $personas->escuelas_id = $datos['escuela'];
+        $personas->direccion = $datos['direccion'];
+        $personas->telefono = $datos['telefono'];
+        $personas->direccion_tutor = $datos['dir'];
+        $personas->telefono_tutor = $datos['tel'];
 
-        $materiales = Fichas::findOrFail($this->IDFicha);
-        //dd($materiales);
-        $materiales->ciclo_academico = $datos['ciclo'];
-        $materiales->fecha = $datos['fecha'];
-        $materiales->observacion = $datos['obs'] ?? null;
-        $materiales->puntaje_total = $this->total;
-        $materiales->persona_id = $this->IdPersona;
-        $materiales->procedencia_id = $datos['item1'];
-        $materiales->carga_familiar_id = $datos['item2'];
-        $materiales->orfandad_id = $datos['item3'];
-        $materiales->situacion_economica_id = $datos['item4'];
-        $materiales->dependencia_economica_id = $datos['item5'];
-        $materiales->pension_mensual_id = $datos['item6'];
-        $materiales->vivienda_id = $datos['item7'];
-        $materiales->clasificacion_socioeconomica_id = $datos['sisfho'] ?? null;
-        $materiales->credito_matriculado_id = $datos['aitem1'];
-        $materiales->credito_aprobado_id = $datos['aitem2'];
-        $materiales->semestre_id = $datos['semestre'];
+        $personas->save();
 
-        $materiales->save();
+        $fichas = Fichas::findOrFail($this->IDFicha);
+        $fichas->ciclo_academico = $datos['ciclo'];
+        $fichas->fecha = $datos['fecha'];
+        $fichas->observacion = $datos['obs'] ?? null;
+        $fichas->puntaje_total = $this->total;
+        $fichas->persona_id = $this->IdPersona;
+        $fichas->procedencia_id = $datos['item1'];
+        $fichas->carga_familiar_id = $datos['item2'];
+        $fichas->orfandad_id = $datos['item3'];
+        $fichas->situacion_economica_id = $datos['item4'];
+        $fichas->dependencia_economica_id = $datos['item5'];
+        $fichas->pension_mensual_id = $datos['item6'];
+        $fichas->vivienda_id = $datos['item7'];
+        $fichas->clasificacion_socioeconomica_id = $datos['sisfho'] ?? null;
+        $fichas->credito_matriculado_id = $datos['aitem1'];
+        $fichas->credito_aprobado_id = $datos['aitem2'];
+        $fichas->semestre_id = $datos['semestre'];
+
+        $fichas->save();
         //$notification = 'Actualizado correctamente';
 
         $this->ficha = false;

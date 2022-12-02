@@ -73,11 +73,11 @@
             <div class="grid grid-cols-4 gap-3 p-5  mb-3 border-t border-blue-700 ">
 
                 <div>
-                    <x-jet-label for="nombre" :value="__('Nombres')" />
+                    <x-jet-label for="nombre" :value="__('Nombres')" /> {{$nombre}}
 
                     <input {{ $bool ? 'disabled' : '' }}
                         class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                        type="text" wire:model="nombre" :value="old('nombre')" placeholder="Nombres estudiante" />
+                        type="text" wire:model="nombre" id="nombre" :value="old('nombre')" placeholder="Nombres estudiante" />
                     @error('nombre')
                     <livewire:mostrar-alerta :message="$message" />
                     @enderror
