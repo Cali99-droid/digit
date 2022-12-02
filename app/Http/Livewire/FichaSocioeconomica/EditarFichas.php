@@ -16,6 +16,7 @@ use App\Models\Ficha_Socioeconomica\Semestres;
 use App\Models\Ficha_Socioeconomica\SituacionesEconomicas;
 use App\Models\Ficha_Socioeconomica\Viviendas;
 use App\Models\persona;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class EditarFichas extends Component
@@ -53,7 +54,7 @@ class EditarFichas extends Component
     public $aitem1;
     public $aitem2;
     public $sisfho;
-    public $semestre;
+    public $semestre, $semestreActualCapturado;
 
     protected $rules = [
         'apellidoPat' => 'required|string',
@@ -91,6 +92,7 @@ class EditarFichas extends Component
         $this->apellidoPat = $persona->apellidoPa;
         $this->apellidoMat = $persona->apellidoMa;
         $this->codigo = $persona->codigo;
+        $this->escuela = $persona->escuelas_id;
 
         $this->direccion = $persona->direccion;
         $this->telefono = $persona->telefono;
@@ -99,6 +101,10 @@ class EditarFichas extends Component
 
         /**THIS IS THE MODEL FICHAS  */
         $this->IDFicha = $ficha->id;
+        $this->semestre = $ficha->semestre_id;
+        
+        $this->semestreActualCapturado = $this->semestre; //ESTE ES EL SEMESTRE CAPTURADO
+        
         $this->item1 = $ficha->procedencia_id;
         $this->item2 = $ficha->carga_familiar_id;
         $this->item3 = $ficha->orfandad_id;
@@ -199,18 +205,18 @@ class EditarFichas extends Component
             $datos['sisfho'] = null;
         }
 
+        /** VALIDAR QUE LA CANTIDAD DE SEMESTRES SIN INCLUIR ESTE NO SE REPITA */
+        if ($this->semestreActualCapturado != $this->semestre) {
+            $cantidad = DB::select('SELECT count(*) as cantidad FROM fichas
+            WHERE persona_id = '.$this->IdPersona.' AND semestre_id = '.$this->semestre.'');
+            
+            if ($cantidad[0]->cantidad > 0) {
+                $this->ficha = false;
+                session()->flash('message', 'El Alumno ya tiene una ficah en el semestre '.$this->semestre);
+                return;
+            }
+        }
 
-        // !validar que un estudiante tenga solo una ficha por semestre
-        /*if ($this->bool) {*/
-
-        //$ficha = Fichas::where('persona_id', $this->IdPersona)->where('semestre_id', $datos['semestre'])->first();
-
-        /*if ($ficha) {
-
-            session()->flash('mensaje-ficha', 'El estudiante ya tiene una ficha en este semestre');
-
-            return;
-        }*/
         $personas = persona::findOrFail($this->IdPersona);
         $personas->apellidoPa = $datos['apellidoPat'];
         $personas->apellidoMa = $datos['apellidoMat'];
@@ -249,46 +255,6 @@ class EditarFichas extends Component
 
         session()->flash('mensaje-ok', 'Ficha guardada correctamente');
         return redirect()->route('ficha.create');
-        /* }*/ /*else {
-            //crear nuevo estudiante
-            persona::create([
-                'nombres' => $datos['nombre'],
-                'apellidoPa' => $datos['apellidoPat'],
-                'apellidoMa' => $datos['apellidoMat'],
-                'sexo' => 'MASCULINO',
-                'codigo' => $datos['codigo'],
-                'direccion' => $datos['direccion'],
-                'escuelas_id' => $datos['escuela'],
-                'telefono' => $datos['telefono'],
-                'direccion_tutor' => $datos['dir'],
-                'telefono_tutor' => $datos['tel'],
-
-            ]);
-            //recuperar id
-            $est = persona::latest('id')->first();
-
-            //crear ficha 
-            Fichas::create([
-                'ciclo_academico' => $datos['ciclo'],
-                'fecha' => $datos['fecha'],
-                'observacion' => $datos['obs'] ?? null,
-                'puntaje_total' => $this->total,
-                'persona_id' => $est->id,
-                'procedencia_id' => $datos['item1'],
-                'carga_familiar_id' => $datos['item2'],
-                'orfandad_id' => $datos['item3'],
-                'situacion_economica_id' => $datos['item4'],
-                'dependencia_economica_id' => $datos['item5'],
-                'pension_mensual_id' => $datos['item6'],
-                'vivienda_id' => $datos['item7'],
-                'clasificacion_socioeconomica_id' => $datos['sisfho'] ?? null,
-                'credito_matriculado_id' => $datos['aitem1'],
-                'credito_aprobado_id' => $datos['aitem2'],
-                'semestre_id' => $datos['semestre'],
-            ]);
-
-            session()->flash('mensaje-ok', 'Ficha y Estudiante guardada correctamente');
-            return redirect()->route('ficha.create');
-        }*/
+        
     }
 }
