@@ -174,9 +174,9 @@ class CrearFicha extends Component
 
         // valida que un estudiante tenga solo una ficha por semestre
         if ($this->bool) {
-            $ficha = Fichas::where('persona_id', $this->estudiante->id)->where('semestre_id', $datos['semestre'])->first();
+            $fich = Fichas::where('persona_id', $this->estudiante->id)->where('semestre_id', $datos['semestre'])->first();
 
-            if ($ficha) {
+            if ($fich) {
 
                 session()->flash('mensaje-ficha', 'El estudiante ya tiene una ficha en este semestre');
 
@@ -213,6 +213,7 @@ class CrearFicha extends Component
             $estudiante = persona::where('codigo', $datos['codigo'])->first();
             if ($estudiante) {
                 session()->flash('mensaje-ficha', 'El código del estudiante no se puede repetir');
+
                 return;
             }
             //crear nuevo estudiante
