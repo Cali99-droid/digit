@@ -20,19 +20,19 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input type="search" id="default-search"
+                <input type="search" id="default-search" wire:model="search"
                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Buscar ..." required>
             </div>
         </div>
         <div class="flex items-center w-1/4">
             <span>Mostrar</span>
-            <select id="countries"
+            <select id="countries" wire:model="cant"
                 class="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>10</option>
-                <option value="US">25</option>
-                <option value="CA">100</option>
-                <option value="FR">Todo</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="">Todo</option>
             </select>
             <span>registros</span>
         </div>
@@ -124,6 +124,7 @@
             </tbody>
         </table>
     </div>
+    {{ $fichas->links() }}
     <script>
         window.addEventListener('swal-confirm', event => {
             Swal.fire({

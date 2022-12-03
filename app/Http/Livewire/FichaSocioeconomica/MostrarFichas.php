@@ -4,25 +4,43 @@ namespace App\Http\Livewire\FichaSocioeconomica;
 
 use App\Models\Ficha_Socioeconomica\Fichas;
 use App\Models\persona;
+use App\Models\personas;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 use Livewire\Component;
 
 class MostrarFichas extends Component
 {
+    use WithPagination;
+
+
+    public $search = '';
+    public $cant='25';
     protected $listeners = ['delete' => 'delete'];
 
     public function render()
     {
-        $fichas = DB::select("SELECT p.id, concat(p.nombres,' ',p.apellidoMa,' ',p.apellidoPa)as datos,s.nombre, e.nombre_escuela,
-        f.ciclo_academico, f.fecha, f.observacion, f.puntaje_total, f.id as idFicha
-        FROM personas p
-        INNER JOIN escuelas e on e.id = p.escuelas_id
-        INNER JOIN fichas f on f.persona_id = p.id
-        INNER JOIN semestres s on s.id = f.semestre_id");
+         $fichas = persona::select('personas.id', DB::raw("CONCAT(personas.nombres,' ' ,personas.apellidoPa,' ' ,personas.apellidoMa) AS 'datos'"),
+        'semestres.nombre', 'escuelas.nombre_escuela',
+        'fichas.ciclo_academico', 'fichas.fecha', 'fichas.observacion', 'fichas.puntaje_total', 'fichas.id AS idFicha')
+        ->join('escuelas', 'escuelas.id', '=', 'personas.escuelas_id')
+        ->join('fichas', 'fichas.persona_id', '=', 'personas.id')
+        ->join('semestres', 'semestres.id', '=', 'fichas.semestre_id')
+        ->where('personas.nombres','like','%'.$this->search.'%')
+        ->orWhere('personas.apellidoPa', 'like', '%'.$this->search.'%')
+        ->orWhere('personas.apellidoMa', 'like', '%'.$this->search.'%')
+        ->orWhere('semestres.nombre', 'like', '%'.$this->search.'%')
+        ->orWhere('escuelas.nombre_escuela', 'like', '%'.$this->search.'%')
+        ->orderBy('semestres.id', 'DESC')
+        ->paginate($this->cant);
         return view('livewire.ficha-socioeconomica.mostrar-fichas', compact('fichas'));
     }
 
-    
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function deleteConfirm($id)
     {
         $this->dispatchBrowserEvent('swal-confirm', [
