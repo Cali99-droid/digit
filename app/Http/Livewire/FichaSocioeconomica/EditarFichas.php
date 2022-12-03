@@ -253,8 +253,8 @@ class EditarFichas extends Component
 
         $this->ficha = false;
 
-        session()->flash('mensaje-ok', 'Ficha guardada correctamente');
-        return redirect()->route('ficha.create');
+        session()->flash('mensaje-ok', 'Ficha actualizada correctamente');
+        return redirect()->route('ficha.index');
         
     }
 }

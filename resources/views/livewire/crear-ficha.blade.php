@@ -2,45 +2,45 @@
 
     <livewire:buscar-persona />
     @if (session()->has('mensaje'))
-    <div id="alert-4" class="w-1/2 flex p-4 mb-4 bg-yellow-100 rounded-lg dark:bg-yellow-200">
-        <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-yellow-700 dark:text-yellow-800" fill="currentColor"
-            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-rule="evenodd"></path>
-        </svg>
-        <span class="sr-only">Info</span>
-        <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-            {{session('mensaje')}}
-        </div>
+        <div id="alert-4" class="w-1/2 flex p-4 mb-4 bg-yellow-100 rounded-lg dark:bg-yellow-200">
+            <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-yellow-700 dark:text-yellow-800" fill="currentColor"
+                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
+                {{ session('mensaje') }}
+            </div>
 
-    </div>
+        </div>
 
     @endif
     @if (session()->has('mensaje-ok'))
-    <div id="alert-5" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
-        <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor"
-            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-rule="evenodd"></path>
-        </svg>
-        <span class="sr-only">Info</span>
-        <div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
-            {{session('mensaje-ok')}}
-        </div>
-        <button type="button"
-            class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300"
-            data-dismiss-target="#alert-5" aria-label="Close">
-            <span class="sr-only">Close</span>
-            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
+        <div id="alert-5" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor"
+                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                     clip-rule="evenodd"></path>
             </svg>
-        </button>
-    </div>
+            <span class="sr-only">Info</span>
+            <div class="ml-3 text-sm font-medium text-green-700 dark:text-green-800">
+                {{ session('mensaje-ok') }}
+            </div>
+            <button type="button"
+                class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300"
+                data-dismiss-target="#alert-5" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
     @endif
     <div>
         {{-- wire:submit.prevent='crearFicha' --}}
@@ -57,12 +57,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
                         <option value="" selected>-- Seleccione --</option>
                         @foreach ($semestres as $d)
-                        <option value="{{ $d->id }}">{{ $d->nombre }}</option>
+                            <option value="{{ $d->id }}">{{ $d->nombre }}</option>
                         @endforeach
                     </select>
 
                 </div> @error('semestre')
-                <livewire:mostrar-alerta :message="$message" />
+                    <livewire:mostrar-alerta :message="$message" />
                 @enderror
             </div>
 
@@ -73,13 +73,14 @@
             <div class="grid grid-cols-4 gap-3 p-5  mb-3 border-t border-blue-700 ">
 
                 <div>
-                    <x-jet-label for="nombre" :value="__('Nombres')" /> {{$nombre}}
+                    <x-jet-label for="nombre" :value="__('Nombres')" />
 
                     <input {{ $bool ? 'disabled' : '' }} id="nombre"
                         class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                        type="text" wire:model="nombre" id="nombre" :value="old('nombre')" placeholder="Nombres estudiante" />
+                        type="text" wire:model="nombre" id="nombre" :value="old('nombre')"
+                        placeholder="Nombres estudiante" />
                     @error('nombre')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -93,7 +94,7 @@
 
 
                     @error('apellidoPat')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -104,7 +105,7 @@
                         class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         wire:model="apellidoMat" :value="old('apellidoMat')" placeholder="Apellidos materno" />
                     @error('apellidoMat')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -116,7 +117,7 @@
                         class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         wire:model="codigo" :value="old('codigo')" placeholder="Código estudiante" />
                     @error('codigo')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -129,16 +130,15 @@
                         {{ $bool ? 'disabled' : '' }}>
                         <option value="" selected>-- Seleccione --</option>
                         @foreach ($escuelas as $d)
-                        <option value="{{ $d->id }}" @if ($estudiante) @if ($d->id == $estudiante->escuelas_id)
-                            selected
-                            @endif
-
-                            @endif
-                            >{{ $d->nombre_escuela }}</option>
+                            <option value="{{ $d->id }}"
+                                @if ($estudiante) @if ($d->id == $estudiante->escuelas_id)
+                            selected @endif
+                                @endif
+                                >{{ $d->nombre_escuela }}</option>
                         @endforeach
                     </select>
                     @error('escuela')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -150,7 +150,7 @@
                         class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         wire:model="direccion" :value="old('direccion')" placeholder="Dirección estudiante" />
                     @error('direccion')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -159,9 +159,10 @@
 
                     <input id="telefono"
                         class=" block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                        type="tel" wire:model="telefono" :value="old('telefono')" placeholder="Teléfono estudiante" />
+                        type="tel" wire:model="telefono" :value="old('telefono')"
+                        placeholder="Teléfono estudiante" />
                     @error('telefono')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -172,7 +173,7 @@
                         class="block mt-1 w-full  border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm "
                         type="text" wire:model="dir" :value="old('dir')" placeholder="Dirección Padre o tutor" />
                     @error('dir')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
 
@@ -182,9 +183,10 @@
 
                     <input id="tel"
                         class="block mt-1 w-full  border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                        type="tel" wire:model="tel" :value="old('tel')" placeholder="Teléfono Padre o tutor" />
+                        type="tel" wire:model="tel" :value="old('tel')"
+                        placeholder="Teléfono Padre o tutor" />
                     @error('tel')
-                    <livewire:mostrar-alerta :message="$message" />
+                        <livewire:mostrar-alerta :message="$message" />
                     @enderror
                 </div>
                 {{-- @endif --}}
@@ -203,14 +205,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
                             <option value="" selected>-- Seleccione --</option>
                             @foreach ($procedencias as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item1')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -221,14 +220,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value="" selected>-- Seleccione --</option>
                             @foreach ($cargasFamiliares as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item2')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -239,14 +235,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value="" selected>-- Seleccione --</option>
                             @foreach ($orfandades as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item3')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -257,14 +250,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value="" selected>-- Seleccione --</option>
                             @foreach ($situacion as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                         </select>
                         @error('item4')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -276,14 +266,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value="" selected>-- Seleccione --</option>
                             @foreach ($dependencias as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
 
                         </select> @error('item5')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -294,13 +281,10 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
                             @foreach ($pensiones as $pension)
-
-
-                            <option value="{{ $pension->id }}">{{ $pension->puntaje }}</option>
-
+                                <option value="{{ $pension->id }}">{{ $pension->puntaje }}</option>
                             @endforeach
                         </select> @error('item6')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
 
                     </div>
@@ -312,14 +296,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
                             @foreach ($viviendas as $d)
-
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
 
                         </select> @error('item7')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -330,7 +311,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
                             @foreach ($clasificacionesSocioeconomicas as $cs)
-                            <option value="{{$cs->id}}">{{$cs->nombre}}</option>
+                                <option value="{{ $cs->id }}">{{ $cs->nombre }}</option>
                             @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
@@ -345,7 +326,7 @@
                             class="block mt-1 w-full border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-md shadow-sm"
                             id="fecha" wire:model="fecha">
                         @error('fecha')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
                     <div>
@@ -372,13 +353,14 @@
                         <select id="ciclo" wire:model="ciclo"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
-                            @for ($i = 1; $i <= 12; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
 
 
                         </select>
                         @error('ciclo')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
                     <div>
@@ -388,9 +370,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
                             @foreach ($creditosMatriculados as $d)
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
@@ -398,7 +378,7 @@
 
                         </select>
                         @error('aitem1')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -409,9 +389,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected value="">-- Seleccione --</option>
                             @foreach ($creditosAprobados as $d)
-
-                            <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
-
+                                <option value="{{ $d->id }}">{{ $d->puntaje }}</option>
                             @endforeach
                             {{-- @error('titulo')
                             <livewire:mostrar-alerta :message="$message" />
@@ -419,7 +397,7 @@
 
                         </select>
                         @error('aitem2')
-                        <livewire:mostrar-alerta :message="$message" />
+                            <livewire:mostrar-alerta :message="$message" />
                         @enderror
                     </div>
 
@@ -433,8 +411,8 @@
                 {{-- wire:click="crearFicha" type="button" --}}
                 <x-jet-button class="bg-blue-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy"
-                        width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
+                        width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
                         <circle cx="12" cy="14" r="2" />
@@ -454,42 +432,47 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ __('') }}
+            <div wire:loading class="w-full">
+                <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+                    role="alert">
+                    <span class="font-medium">!</span> Loading ...
+                </div>
+            </div>
+
             <div class="flex justify-start gap-5">
                 <div>
                     <p class="font-bold text-lg">Puntaje Ev. Socioeconómica: <span
-                            class="text-gray-600 font-normal text-lg">{{$totalEc ??
-                            ''}}</span></p>
+                            class="text-gray-600 font-normal text-lg">{{ $totalEc ?? '' }}</span>
+                    </p>
                     <p class="font-bold text-lg">Puntaje Ev. Académica: <span
-                            class="text-gray-600 font-normal text-lg">{{$totalAca ??
-                            ''}}</span></p>
+                            class="text-gray-600 font-normal text-lg">{{ $totalAca ?? '' }}</span>
+                    </p>
                 </div>
                 <div>
                     <p class="font-bold text-lg">Puntaje Total : <span
-                            class="text-gray-600 font-normal text-lg">{{$total ??
-                            ''}}</span>
+                            class="text-gray-600 font-normal text-lg">{{ $total ?? '' }}</span>
                     </p>
                     <p class="font-bold text-lg">Clasificacion: <span
-                            class="text-gray-600 font-normal text-lg">{{$clasificacion
-                            ?? ''}}</span></p>
+                            class="text-gray-600 font-normal text-lg">{{ $clasificacion ?? '' }}</span>
+                    </p>
                 </div>
 
             </div>
             @if (session()->has('mensaje-ficha'))
 
-            <div id="alert-6" class="flex p-4 mb-4 bg-yellow-100 rounded-lg dark:bg-yellow-200" role="alert">
-                <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-yellow-700 dark:text-yellow-800"
-                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                <span class="sr-only">Info</span>
-                <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-                    {{session('mensaje-ficha')}}
-                </div>
+                <div id="alert-6" class="flex p-4 mb-4 bg-yellow-100 rounded-lg dark:bg-yellow-200" role="alert">
+                    <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-yellow-700 dark:text-yellow-800"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
+                        {{ session('mensaje-ficha') }}
+                    </div>
 
-            </div>
+                </div>
             @endif
         </x-slot>
 

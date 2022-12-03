@@ -425,7 +425,12 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ __('') }}
+            <div wire:loading class="w-full">
+                <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+                    <span class="font-medium">!</span> Loading ...
+                  </div>
+            </div>
+            
             <div class="flex justify-start gap-5">
                 <div>
                     <p class="font-bold text-lg">Puntaje Ev. Socioeconómica: <span
