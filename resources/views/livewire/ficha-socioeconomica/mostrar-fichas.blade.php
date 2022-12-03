@@ -37,10 +37,12 @@
             <span>registros</span>
         </div>
 
-
-
     </div>
-
+    <div wire:loading class="w-full">
+        <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+            <span class="font-medium">!</span> Loading ...
+          </div>
+    </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
         <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
