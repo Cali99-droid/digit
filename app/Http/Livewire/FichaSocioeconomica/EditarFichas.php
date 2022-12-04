@@ -211,8 +211,9 @@ class EditarFichas extends Component
             WHERE persona_id = '.$this->IdPersona.' AND semestre_id = '.$this->semestre.'');
             
             if ($cantidad[0]->cantidad > 0) {
-                $this->ficha = false;
-                session()->flash('message', 'El Alumno ya tiene una ficah en el semestre '.$this->semestre);
+                $name_semestre = Semestres::find($this->semestre);
+                session()->flash('message', 'El Alumno ya tiene una ficha registrada en el semestre '.$name_semestre->nombre.'. 
+                Por favor revice las fichas del Alumno');
                 return;
             }
         }

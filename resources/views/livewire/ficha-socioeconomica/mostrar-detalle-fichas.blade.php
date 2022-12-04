@@ -1,7 +1,7 @@
 <div>
     
     
-    <div class="flex justify-between  items-center mt-3">
+    <!--<div class="flex justify-between  items-center mt-3">
         <div class="flex items-center w-2/4">
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -30,7 +30,7 @@
 
 
 
-    </div>
+    </div>-->
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
         <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -54,9 +54,9 @@
                     <th scope="col" class="py-3 px-6">
                         Registrado
                     </th>
-                    <th scope="col" class="py-3 px-6">
+                    <!--<th scope="col" class="py-3 px-6">
                         Acciones
-                    </th>
+                    </th>-->
                 </tr>
             </thead>
             <tbody>
@@ -84,15 +84,15 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            @if ($f->puntaje_total >= 164 && $f->puntaje_total <= 180)
+                            @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180)
                                 C
                             @endif
 
-                            @if ($f->puntaje_total >= 152 && $f->puntaje_total <= 162)
+                            @if ($f->puntaje_total > 150 && $f->puntaje_total <= 162)
                                 B
                             @endif
 
-                            @if ($f->puntaje_total < 152)
+                            @if ($f->puntaje_total <= 150)
                                 A
                             @endif
                         </th>
@@ -100,7 +100,7 @@
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             Hace 2 días
                         </th>
-                        <th scope="row"
+                        <!--<th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <a href="#"
                                 class="inline-flex items-center px-3 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Editar</a>
@@ -109,7 +109,7 @@
                             <a href="#"
                                 class="inline-flex items-center px-3 py-1 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Ver
                                 Todo</a>
-                        </th>
+                        </th>-->
                     </tr>
                 @endforeach
             </tbody>

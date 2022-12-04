@@ -95,15 +95,15 @@
                         </th>
                         <th scope="row"
                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            @if ($f->puntaje_total >= 164 && $f->puntaje_total <= 180)
+                            @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180)
                                 C
                             @endif
 
-                            @if ($f->puntaje_total >= 152 && $f->puntaje_total <= 162)
+                            @if ($f->puntaje_total > 150 && $f->puntaje_total <= 162)
                                 B
                             @endif
 
-                            @if ($f->puntaje_total < 152)
+                            @if ($f->puntaje_total <= 150)
                                 A
                             @endif
                         </th>

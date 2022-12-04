@@ -8,7 +8,7 @@
                     <div>
                         <x-jet-label for="codigob" :value="__('Código del estudiante')" />
 
-                        <x-jet-input id="codigob" class="block mt-1 w-60" type="text" wire:model="codigob"
+                        <x-jet-input id="codigob" class="block mt-1 w-60" type="text" wire:model.defer="codigob"
                             placeholder="Ingrese código del estudiante" :value="old('codigo')" required autofocus />
 
                     </div>
