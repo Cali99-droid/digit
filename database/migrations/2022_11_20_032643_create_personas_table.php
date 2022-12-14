@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('apellidoMa');
             $table->string('nombres');
             $table->string('sexo')->default('MASCULINO');
-            $table->date('fechaNac');
-            $table->string('lugarNac');
-            $table->string('estadoCivil');
-            $table->string('ocupacion');
-            $table->string('lugarProc');
-            $table->string('DNI');
+            $table->date('fechaNac')->nullable();
+            $table->string('lugarNac')->nullable();
+            $table->string('estadoCivil')->nullable();
+            $table->string('ocupacion')->nullable();
+            $table->string('lugarProc')->nullable();
+            $table->string('DNI')->nullable();
             $table->string('codigo');
             $table->string('direccion');
             $table->foreignId('escuelas_id')->references('id')

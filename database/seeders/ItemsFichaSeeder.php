@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory as Faker;
+use App\Models\escuela;
+use App\Models\facultad;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -10,12 +13,15 @@ use App\Models\Ficha_Socioeconomica\ClasificacionesSocioeconomicas;
 use App\Models\Ficha_Socioeconomica\CreditosAprobados;
 use App\Models\Ficha_Socioeconomica\CreditosMatriculados;
 use App\Models\Ficha_Socioeconomica\DependenciasEconomicas;
+use App\Models\Ficha_Socioeconomica\Fichas;
 use App\Models\Ficha_Socioeconomica\Orfandades;
 use App\Models\Ficha_Socioeconomica\PensionesMensuales;
 use App\Models\Ficha_Socioeconomica\Procedencias;
 use App\Models\Ficha_Socioeconomica\Semestres;
 use App\Models\Ficha_Socioeconomica\SituacionesEconomicas;
 use App\Models\Ficha_Socioeconomica\Viviendas;
+use App\Models\persona;
+use App\Models\User;
 
 class ItemsFichaSeeder extends Seeder
 {
@@ -65,7 +71,7 @@ class ItemsFichaSeeder extends Seeder
 
 
 
-        
+
         Orfandades::create([
             'name' => 'Huérfano de Padres o Independizado',
             'puntaje' => 20
@@ -209,7 +215,7 @@ class ItemsFichaSeeder extends Seeder
             'name' => 'De 11 a 15 créditos',
             'puntaje' => 16
         ]);
-        
+
 
         Semestres::create([
             'nombre' => '2017-I'
@@ -248,6 +254,123 @@ class ItemsFichaSeeder extends Seeder
         ClasificacionesSocioeconomicas::create([
             'nombre' => 'No Pobre'
         ]);
+
+
+
+
+
+
+
+
+
+
+
+
+        /** ******** SEEDERS PARA POBLAR CON DATOS LAS FICHA SOCIOECONÓMICAS DE LOS ALUMNOS   ************* */
+        User::create(
+            [
+                'name' => 'Carlos Emilio',
+                'email' => 'carlos2000emilioa@gmail.com',
+                'password' => bcrypt('123456789')
+            ]
+        );
+
+        // FACULTADES
+        facultad::create([
+            'nombre_facultad' => 'CIENCIAS'  //--> 1
+        ]);
+
+        facultad::create([
+            'nombre_facultad' => 'CIENCIAS DEL AMBIENTE' // --> 2
+        ]);
+
+        facultad::create([
+            'nombre_facultad' => 'CIENCIAS SOCIALES, EDUCACIÓN Y COMUNICACIÓN' // --> 3
+        ]);
+
+        facultad::create([
+            'nombre_facultad' => 'FACULTAD DE ADMINISTRACIÓN Y TURISMO' // --> 4
+        ]);
+
+        // ESCUELAS
+        escuela::create([
+            'nombre_escuela' => 'ESTADÍSTICA E INFORMÁTICA',
+            'facultades_id' => 1
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'ING. DE SISTEMAS E INFORMÁTICA',
+            'facultades_id' => 1
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'MATEMÁTICA',
+            'facultades_id' => 1
+        ]);
+
+        escuela::create([
+            'nombre_escuela' => 'ING. AMBIENTAL',
+            'facultades_id' => 2
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'ING. SANITARIA',
+            'facultades_id' => 2
+        ]);
+
+        escuela::create([
+            'nombre_escuela' => 'CIENCIAS SOCIALES',
+            'facultades_id' => 3
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'EDUCACIÓN',
+            'facultades_id' => 3
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'LENGUA EXTRANJERA INGLÉS',
+            'facultades_id' => 3
+        ]);
+
+        escuela::create([
+            'nombre_escuela' => 'ADMINISTRAICIÓN',
+            'facultades_id' => 4
+        ]);
+        escuela::create([
+            'nombre_escuela' => 'TURISMO',
+            'facultades_id' => 4
+        ]);
+
+        $faker = Faker::create();
+        for ($i = 0; $i < 10; $i++) {
+            persona::create([
+                'apellidoPa' => $faker->lastName,
+                'apellidoMa' => $faker->lastName,
+                'nombres' => $faker->name,
+                'codigo' => $faker->unique()->numberBetween($min = 1000, $max = 9000),
+                'direccion' => $faker->address,
+                'escuelas_id' => rand(1, 10)
+            ]);
+        }
+
+        /*for ($i = 0; $i < 40; $i++) {
+            Fichas::create(
+                [
+                    'ciclo_academico',
+                    'fecha',
+                    'observacion',
+                    'puntaje_total',
+                    'persona_id',
+                    'procedencia_id',
+                    'carga_familiar_id',
+                    'orfandad_id',
+                    'situacion_economica_id',
+                    'dependencia_economica_id',
+                    'pension_mensual_id',
+                    'vivienda_id',
+                    'clasificacion_socioeconomica_id',
+                    'credito_matriculado_id',
+                    'credito_aprobado_id',
+                    'semestre_id'
+                ]
+            );
+        }*/
 
         
     }
