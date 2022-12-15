@@ -349,29 +349,253 @@ class ItemsFichaSeeder extends Seeder
             ]);
         }
 
-        /*for ($i = 0; $i < 40; $i++) {
-            Fichas::create(
-                [
-                    'ciclo_academico',
-                    'fecha',
-                    'observacion',
-                    'puntaje_total',
-                    'persona_id',
-                    'procedencia_id',
-                    'carga_familiar_id',
-                    'orfandad_id',
-                    'situacion_economica_id',
-                    'dependencia_economica_id',
-                    'pension_mensual_id',
-                    'vivienda_id',
-                    'clasificacion_socioeconomica_id',
-                    'credito_matriculado_id',
-                    'credito_aprobado_id',
-                    'semestre_id'
-                ]
-            );
-        }*/
+        for ($i = 1; $i <= 10; $i++) {
+            switch ($i) {
+                case 1:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 4),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 2:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 4),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 3:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 4:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 5:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 6:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 7:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 8:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 9:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
+                case 10:
+                    for ($j = 1; $j <= 6; $j++) {
+                        Fichas::create(
+                            [
+                                'ciclo_academico' => $j,
+                                'fecha' => now(),
+                                'observacion' => '',
+                                'puntaje_total' => rand(155, 170),
+                                'persona_id' => $i,
+                                'procedencia_id' => rand(1, 4),
+                                'carga_familiar_id' => rand(1, 3),
+                                'orfandad_id' => rand(1, 4),
+                                'situacion_economica_id' => rand(1, 4),
+                                'dependencia_economica_id' => rand(1, 4),
+                                'pension_mensual_id' => rand(1, 5),
+                                'vivienda_id' => rand(1, 4),
+                                'clasificacion_socioeconomica_id' => rand(1, 3),
+                                'credito_matriculado_id' => rand(1, 3),
+                                'credito_aprobado_id' => rand(1, 3),
+                                'semestre_id' => $j
+                            ]
+                        );
+                    }
+                    break;
 
-        
+                default:
+                    # code...
+                    break;
+            }
+        }
     }
 }
