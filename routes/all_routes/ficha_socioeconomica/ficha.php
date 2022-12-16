@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/ficha-socioeconomica', function () {
     return view('ficha.index');
-})->name('ficha.index')->middleware('auth');
+})->name('ficha.index')->middleware(['auth','verified']);
 
 /** crear ficha */
 Route::get('/ficha-socioeconomica/create', function () {
     return view('ficha.create');
-})->name('ficha.create')->middleware('auth');
+})->name('ficha.create')->middleware(['auth','verified']);
 
-Route::get('/ficha-socioeconomica/editar/{persona}/{ficha}', [FichaController::class, 'editar'])->name('ficha.editar')->middleware('auth');
-Route::get('/ficha-socioeconomica/{id}', [FichaController::class, 'mostrarDetalleAlumno'])->middleware(['auth'])->name('ficha.detalle');
+Route::get('/ficha-socioeconomica/editar/{persona}/{ficha}', [FichaController::class, 'editar'])->name('ficha.editar')->middleware(['auth','verified']);
+Route::get('/ficha-socioeconomica/{id}', [FichaController::class, 'mostrarDetalleAlumno'])->middleware(['auth','verified'])->name('ficha.detalle');

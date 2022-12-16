@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/users', function () {
     return view('users.index');
-})->name('users.index')->middleware('auth');
+})->name('users.index')->middleware(['auth','admin']);
 
-Route::get('/users/create', [UserController::class, 'crearUsuario'])->middleware(['auth'])->name('users.create');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
-Route::post('/users/store', [UserController::class, 'guardarUsuario'])->middleware(['auth', 'verified'])->name('users.store');
-Route::put('/users/{idUser}/update', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('users.update');
-Route::delete('/users/delete/{idUser}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('users.destroy');
+Route::get('/users/create', [UserController::class, 'crearUsuario'])->middleware(['auth','admin'])->name('users.create');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware(['auth', 'admin'])->name('users.edit');
+Route::post('/users/store', [UserController::class, 'guardarUsuario'])->middleware(['auth', 'admin'])->name('users.store');
+Route::put('/users/{idUser}/update', [UserController::class, 'update'])->middleware(['auth', 'admin'])->name('users.update');
+Route::delete('/users/delete/{idUser}', [UserController::class, 'destroy'])->middleware(['auth', 'admin'])->name('users.destroy');
