@@ -124,6 +124,15 @@
 
                             <div class="border-t border-gray-100"></div>
 
+                            <!-- Administrar Usuarios -->
+                            <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('users.index') }}">
+                                    {{ __('Administrar Usuarios') }}
+                                </x-jet-dropdown-link>
+                            </form>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
@@ -190,6 +199,15 @@
                     {{ __('API Tokens') }}
                 </x-jet-responsive-nav-link>
                 @endif
+
+                <!-- Administrar Usuarios -->
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+
+                    <x-jet-responsive-nav-link href="{{ route('users.index') }}">
+                        {{ __('Administrar Usuarios') }}
+                    </x-jet-responsive-nav-link>
+                </form>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>

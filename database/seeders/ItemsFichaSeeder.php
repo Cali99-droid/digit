@@ -271,7 +271,8 @@ class ItemsFichaSeeder extends Seeder
             [
                 'name' => 'Carlos Emilio',
                 'email' => 'carlos2000emilioa@gmail.com',
-                'password' => bcrypt('123456789')
+                'password' => bcrypt('123456789'),
+                'rol_id' => 1
             ]
         );
 

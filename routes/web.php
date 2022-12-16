@@ -32,3 +32,4 @@ Route::middleware([
 
 //Ficha Socioeconómica
 require __DIR__ . '/all_routes/ficha_socioeconomica/ficha.php';
+require __DIR__ . '/all_routes/users/users.php';

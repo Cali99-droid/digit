@@ -32,6 +32,10 @@ FICHA SOCIOECONÓMICA
     ** ->11.- Clasificaciones Socioeconómicas (SISFOH)
     php artisan make:model ClasificacionesSocioeconomicas -m 
 
+    *** ROLES
+    php artisan make:model Roles -m 
+
+    --> php artisan make:controller UserController
 
     --> TABLE FICHA
         FICHAS SOCIOECONÓMICAS
@@ -40,9 +44,11 @@ FICHA SOCIOECONÓMICA
     
     
     --> php artisan make:seeder ItemsFichaSeeder
+    --> php artisan make:seeder RolesSeeder
 
 
-
+    MIDDLEWARES
+    --> php artisan make:middleware AdminMiddleware
 
     LIVEWIRE
      php artisan make:livewire FichaSocioeconomica/MostrarFichas
@@ -50,3 +56,5 @@ FICHA SOCIOECONÓMICA
      php artisan make:livewire FichaSocioeconomica/EditarFichas
      
      php artisan make:livewire FichaSocioeconomica/MostrarDetalleFichas
+
+     php artisan make:livewire Users/MostrarUsers
