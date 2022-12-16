@@ -34,11 +34,22 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
+        <header class="bg-white shadow">
+            <div class="flex items-center px-10">
+                <div class="p-1">
+                    <button onclick="history.back()" class="text-blue-600  px-1 py-1  "><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
-            </header>
+            </div>
+        </header>
         @endif
 
         <!-- Page Content -->

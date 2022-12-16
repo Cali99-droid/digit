@@ -1,14 +1,5 @@
 <div>
-    <div>
-        <div class="">
-            <div class="flex items-end">
-                <a href="{{ route('ficha.create') }}" type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 < mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    <i class="fa-regular fa-file"></i> Nuevo
-                </a>
-            </div>
-        </div>
-    </div>
+
 
     <div class="flex justify-between  items-center mt-3">
         <div class="flex items-center w-2/4">
@@ -39,9 +30,10 @@
 
     </div>
     <div wire:loading class="w-full">
-        <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+        <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+            role="alert">
             <span class="font-medium">!</span> Loading ...
-          </div>
+        </div>
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
         <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -56,9 +48,7 @@
                     <th scope="col" class="py-3 px-6">
                         Semestre
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        Escuela
-                    </th>
+
                     <th scope="col" class="py-3 px-6">
                         Clasificación
                     </th>
@@ -72,56 +62,37 @@
             </thead>
             <tbody>
                 @php
-                    $contador = 1;
+                $contador = 1;
                 @endphp
                 @foreach ($fichas as $f)
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $contador++ }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $f->datos }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $f->nombre }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $f->nombre_escuela }}
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180)
-                                C
-                            @endif
+                <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $contador++ }}
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $f->datos }}
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $f->nombre }}
+                    </th>
 
-                            @if ($f->puntaje_total > 150 && $f->puntaje_total <= 162)
-                                B
-                            @endif
-
-                            @if ($f->puntaje_total <= 150)
-                                A
-                            @endif
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Hace 2 días
-                        </th>
-                        <th scope="row"
-                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{ route('ficha.editar', [$f->id, $f->idFicha]) }}"
-                                class="inline-flex items-center px-3 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Editar</a>
-                            <a href="#" wire:click="deleteConfirm({{ $f->idFicha }})"
-                                class="inline-flex items-center px-3 py-1 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring focus:ring-red-300 disabled:opacity-25 transition">Eliminar</a>
-                            <a href="{{ route('ficha.detalle', $f->id) }}"
-                                class="inline-flex items-center px-3 py-1 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Ver
-                                Todo</a>
-                        </th>
-                    </tr>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180) C @endif @if ($f->puntaje_total > 150
+                            && $f->puntaje_total <= 162) B @endif @if ($f->puntaje_total <= 150) A @endif </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        Hace 2 días
+                    </th>
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <a href="{{ route('ficha.editar', [$f->id, $f->idFicha]) }}"
+                            class="inline-flex items-center px-3 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Editar</a>
+                        <a href="#" wire:click="deleteConfirm({{ $f->idFicha }})"
+                            class="inline-flex items-center px-3 py-1 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring focus:ring-red-300 disabled:opacity-25 transition">Eliminar</a>
+                        <a href="{{ route('ficha.detalle', $f->id) }}"
+                            class="inline-flex items-center px-3 py-1 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Ver
+                            Todo</a>
+                    </th>
+                </tr>
                 @endforeach
             </tbody>
         </table>
