@@ -1,0 +1,61 @@
+FICHA SOCIOECONÓMICA
+    1.- Procedencia del Alumno
+    php artisan make:model Procedencias -m 
+
+    2.- Carga Familiar de los Padres
+    php artisan make:model CargasFamiliares -m 
+
+    3.- Situación de Orfandad
+    php artisan make:model Orfandades -m 
+
+    4.- Situación Económica
+    php artisan make:model SituacionesEconomicas -m 
+
+    5.- Dependencias Económica del Estudiante
+    php artisan make:model DependenciasEconomicas -m 
+
+    6.- Pensión Mensual que recibe el estudiante
+    php artisan make:model PensionesMensuales -m 
+
+    7.- Vivienda del estudiante
+    php artisan make:model Viviendas -m 
+
+    8.- Créditos matriculados en el Ciclo Inmediato
+    php artisan make:model CreditosMatriculados -m 
+
+    9.- Créditos aprobados en el Ciclo Anteriior
+    php artisan make:model CreditosAprobados -m
+
+    ** ->10.- Semestres
+    php artisan make:model Semestres -m 
+
+    ** ->11.- Clasificaciones Socioeconómicas (SISFOH)
+    php artisan make:model ClasificacionesSocioeconomicas -m 
+
+    *** ROLES
+    php artisan make:model Roles -m 
+
+    --> php artisan make:controller UserController
+
+    --> TABLE FICHA
+        FICHAS SOCIOECONÓMICAS
+        php artisan make:model Fichas -m 
+
+    
+    
+    --> php artisan make:seeder ItemsFichaSeeder
+    --> php artisan make:seeder RolesSeeder
+
+
+    MIDDLEWARES
+    --> php artisan make:middleware AdminMiddleware
+    --> php artisan make:middleware FichaSocioeconomicaMiddleware
+
+    LIVEWIRE
+     php artisan make:livewire FichaSocioeconomica/MostrarFichas
+
+     php artisan make:livewire FichaSocioeconomica/EditarFichas
+     
+     php artisan make:livewire FichaSocioeconomica/MostrarDetalleFichas
+
+     php artisan make:livewire Users/MostrarUsers

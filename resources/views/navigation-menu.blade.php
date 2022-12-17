@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <h2 class=" text-3xl">DIGIT<span class="text-blue-700 font-bold">DBU</span></h2>
                     </a>
                 </div>
 
@@ -15,10 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Socioeconomico') }}
+                    <x-jet-nav-link href="{{ route('ficha.index') }}"
+                        :active="request()->routeIs(['ficha.index', 'ficha.create', 'ficha.detalle', 'ficha.editar'])">
+                        {{ __('F. Socioeconómica') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('salud') }}" :active="request()->routeIs('salud')">
                         {{ __('Salud') }}
                     </x-jet-nav-link>
                 </div>
@@ -124,6 +125,17 @@
 
                             <div class="border-t border-gray-100"></div>
 
+                            <!-- Administrar Usuarios -->
+                            @if (Auth::user()->rol_id == 1)
+                            <form method="POST" action="#" x-data>
+                                <x-jet-dropdown-link href="{{ route('users.index') }}">
+                                    {{ __('Administrar Usuarios') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                            @endif
+
+
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
@@ -142,10 +154,10 @@
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -154,7 +166,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
@@ -190,6 +202,16 @@
                     {{ __('API Tokens') }}
                 </x-jet-responsive-nav-link>
                 @endif
+
+                <!-- Administrar Usuarios -->
+                @if (Auth::user()->rol_id == 1)
+                <form method="POST" action="#" x-data>
+                    <x-jet-responsive-nav-link href="{{ route('users.index') }}">
+                        {{ __('Administrar Usuarios') }}
+                    </x-jet-responsive-nav-link>
+                </form>
+                @endif
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>

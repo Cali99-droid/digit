@@ -25,4 +25,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/salud', function () {
+        return view('salud.index');
+    })->name('salud');
 });
+
+//Ficha Socioeconómica
+require __DIR__ . '/all_routes/ficha_socioeconomica/ficha.php';
+require __DIR__ . '/all_routes/users/users.php';
