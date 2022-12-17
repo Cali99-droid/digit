@@ -49,6 +49,7 @@ FICHA SOCIOECONÓMICA
 
     MIDDLEWARES
     --> php artisan make:middleware AdminMiddleware
+    --> php artisan make:middleware FichaSocioeconomicaMiddleware
 
     LIVEWIRE
      php artisan make:livewire FichaSocioeconomica/MostrarFichas
