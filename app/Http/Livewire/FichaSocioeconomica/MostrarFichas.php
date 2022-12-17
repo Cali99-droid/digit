@@ -15,24 +15,33 @@ class MostrarFichas extends Component
 
 
     public $search = '';
-    public $cant='10';
+    public $cant = '10';
     protected $listeners = ['delete' => 'delete'];
 
     public function render()
     {
-         $fichas = persona::select('personas.id', DB::raw("CONCAT(personas.nombres,' ' ,personas.apellidoPa,' ' ,personas.apellidoMa) AS 'datos'"),
-        'semestres.nombre', 'escuelas.nombre_escuela',
-        'fichas.ciclo_academico','fichas.created_at', 'fichas.fecha', 'fichas.observacion', 'fichas.puntaje_total', 'fichas.id AS idFicha')
-        ->join('escuelas', 'escuelas.id', '=', 'personas.escuelas_id')
-        ->join('fichas', 'fichas.persona_id', '=', 'personas.id')
-        ->join('semestres', 'semestres.id', '=', 'fichas.semestre_id')
-        ->where('personas.nombres','like','%'.$this->search.'%')
-        ->orWhere('personas.apellidoPa', 'like', '%'.$this->search.'%')
-        ->orWhere('personas.apellidoMa', 'like', '%'.$this->search.'%')
-        ->orWhere('semestres.nombre', 'like', '%'.$this->search.'%')
-        ->orWhere('escuelas.nombre_escuela', 'like', '%'.$this->search.'%')
-        ->orderBy('semestres.id', 'DESC')
-        ->paginate($this->cant);
+        $fichas = persona::select(
+            'personas.id',
+            DB::raw("CONCAT(personas.nombres,' ' ,personas.apellidoPa,' ' ,personas.apellidoMa) AS 'datos'"),
+            'semestres.nombre',
+            'escuelas.nombre_escuela',
+            'fichas.ciclo_academico',
+            'fichas.created_at',
+            'fichas.fecha',
+            'fichas.observacion',
+            'fichas.puntaje_total',
+            'fichas.id AS idFicha'
+        )
+            ->join('escuelas', 'escuelas.id', '=', 'personas.escuelas_id')
+            ->join('fichas', 'fichas.persona_id', '=', 'personas.id')
+            ->join('semestres', 'semestres.id', '=', 'fichas.semestre_id')
+            ->where('personas.nombres', 'like', '%' . $this->search . '%')
+            ->orWhere('personas.apellidoPa', 'like', '%' . $this->search . '%')
+            ->orWhere('personas.apellidoMa', 'like', '%' . $this->search . '%')
+            ->orWhere('semestres.nombre', 'like', '%' . $this->search . '%')
+            ->orWhere('escuelas.nombre_escuela', 'like', '%' . $this->search . '%')
+            ->orderBy('created_at', 'DESC')
+            ->paginate($this->cant);
         return view('livewire.ficha-socioeconomica.mostrar-fichas', compact('fichas'));
     }
 

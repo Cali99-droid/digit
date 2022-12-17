@@ -79,7 +79,7 @@ class CrearFicha extends Component
         'obs' => '',
         'sisfho' => '',
         'dir' => '',
-        'tel' => 'numeric',
+        'tel' => '',
 
 
     ];
