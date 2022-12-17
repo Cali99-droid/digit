@@ -10,6 +10,7 @@ class MostrarUsers extends Component
 {
     use WithPagination;
     
+    public $cant='10';
     public $search;
 
 
@@ -22,7 +23,7 @@ class MostrarUsers extends Component
                 ->orWhere('users.email', 'like', '%'.$this->search.'%')
                 ->orWhere('roles.nombre', 'like', '%'.$this->search.'%')
                 ->orderBy('users.id', 'ASC')
-                ->paginate(5);
+                ->paginate($this->cant);
                 
         return view('livewire.users.mostrar-users', compact('users'));
     }

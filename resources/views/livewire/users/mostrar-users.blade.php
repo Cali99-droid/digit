@@ -4,7 +4,7 @@
             <div class="flex items-end">
                 <a href="{{ route('users.create') }}" type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 < mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    <i class="fa-regular fa-file"></i> Nuevo Usuario
+                    <i class="fa-solid fa-user"></i> Nuevo Usuario
                 </a>
             </div>
         </div>
@@ -55,10 +55,9 @@
             <span>Mostrar</span>
             <select id="countries" wire:model="cant"
                 class="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="25">25</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
                 <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="">Todo</option>
             </select>
             <span>registros</span>
         </div>
@@ -67,7 +66,7 @@
     <div wire:loading class="w-full">
         <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
             role="alert">
-            <span class="font-medium">!</span> Loading ...
+            <span class="font-medium">!</span> Cargando ...
         </div>
     </div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
