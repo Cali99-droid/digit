@@ -18,7 +18,7 @@ class MostrarDetalleFichas extends Component
     
     public function render()
     {
-        $fichas = DB::select("SELECT p.id, concat(p.nombres,' ',p.apellidoMa,' ',p.apellidoPa)as datos,s.nombre, e.nombre_escuela,
+        $fichas = DB::select("SELECT p.id, concat(p.nombres,' ',p.apellidoPa,' ',p.apellidoMa)as datos,s.nombre, e.nombre_escuela,
         f.ciclo_academico, f.fecha, f.observacion, f.puntaje_total, f.created_at
         FROM personas p
         INNER JOIN escuelas e on e.id = p.escuelas_id
