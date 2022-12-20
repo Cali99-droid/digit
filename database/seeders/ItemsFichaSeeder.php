@@ -276,67 +276,9 @@ class ItemsFichaSeeder extends Seeder
             ]
         );
 
-        // FACULTADES
-        facultad::create([
-            'nombre_facultad' => 'CIENCIAS'  //--> 1
-        ]);
+        
 
-        facultad::create([
-            'nombre_facultad' => 'CIENCIAS DEL AMBIENTE' // --> 2
-        ]);
-
-        facultad::create([
-            'nombre_facultad' => 'CIENCIAS SOCIALES, EDUCACIÓN Y COMUNICACIÓN' // --> 3
-        ]);
-
-        facultad::create([
-            'nombre_facultad' => 'FACULTAD DE ADMINISTRACIÓN Y TURISMO' // --> 4
-        ]);
-
-        // ESCUELAS
-        escuela::create([
-            'nombre_escuela' => 'ESTADÍSTICA E INFORMÁTICA',
-            'facultades_id' => 1
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'ING. DE SISTEMAS E INFORMÁTICA',
-            'facultades_id' => 1
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'MATEMÁTICA',
-            'facultades_id' => 1
-        ]);
-
-        escuela::create([
-            'nombre_escuela' => 'ING. AMBIENTAL',
-            'facultades_id' => 2
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'ING. SANITARIA',
-            'facultades_id' => 2
-        ]);
-
-        escuela::create([
-            'nombre_escuela' => 'CIENCIAS SOCIALES',
-            'facultades_id' => 3
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'EDUCACIÓN',
-            'facultades_id' => 3
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'LENGUA EXTRANJERA INGLÉS',
-            'facultades_id' => 3
-        ]);
-
-        escuela::create([
-            'nombre_escuela' => 'ADMINISTRAICIÓN',
-            'facultades_id' => 4
-        ]);
-        escuela::create([
-            'nombre_escuela' => 'TURISMO',
-            'facultades_id' => 4
-        ]);
+        
 
         $faker = Faker::create();
         for ($i = 0; $i < 10; $i++) {
