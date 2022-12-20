@@ -63,7 +63,7 @@ class EditarFichas extends Component
         'codigo' => 'required|string', //|unique:personas
         'escuela' => 'required|not_in:0',
         'direccion' => 'required',
-        'telefono' => 'required|string',
+        'telefono' => '',
         'item1' => 'required|not_in:0',
         'item2' => 'required|not_in:0',
         'item3' => 'required|not_in:0',
@@ -75,7 +75,7 @@ class EditarFichas extends Component
         'aitem1' => 'required|not_in:0',
         'aitem2' => 'required|not_in:0',
         'semestre' => 'required|not_in:0',
-        'ciclo' => 'integer|between:1,12',
+        'ciclo' => '',
         'obs' => '',
         'sisfho' => '',
         'dir' => '',
@@ -102,9 +102,9 @@ class EditarFichas extends Component
         /**THIS IS THE MODEL FICHAS  */
         $this->IDFicha = $ficha->id;
         $this->semestre = $ficha->semestre_id;
-        
+
         $this->semestreActualCapturado = $this->semestre; //ESTE ES EL SEMESTRE CAPTURADO
-        
+
         $this->item1 = $ficha->procedencia_id;
         $this->item2 = $ficha->carga_familiar_id;
         $this->item3 = $ficha->orfandad_id;
@@ -208,11 +208,11 @@ class EditarFichas extends Component
         /** VALIDAR QUE LA CANTIDAD DE SEMESTRES SIN INCLUIR ESTE NO SE REPITA */
         if ($this->semestreActualCapturado != $this->semestre) {
             $cantidad = DB::select('SELECT count(*) as cantidad FROM fichas
-            WHERE persona_id = '.$this->IdPersona.' AND semestre_id = '.$this->semestre.'');
-            
+            WHERE persona_id = ' . $this->IdPersona . ' AND semestre_id = ' . $this->semestre . '');
+
             if ($cantidad[0]->cantidad > 0) {
                 $name_semestre = Semestres::find($this->semestre);
-                session()->flash('message', 'El Alumno ya tiene una ficha registrada en el semestre '.$name_semestre->nombre.'. 
+                session()->flash('message', 'El Alumno ya tiene una ficha registrada en el semestre ' . $name_semestre->nombre . '. 
                 Por favor revice las fichas del Alumno');
                 return;
             }
@@ -256,6 +256,5 @@ class EditarFichas extends Component
 
         session()->flash('mensaje-ok', 'Ficha actualizada correctamente');
         return redirect()->route('ficha.index');
-        
     }
 }
