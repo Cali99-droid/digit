@@ -52,9 +52,6 @@ class ItemsFichaSeeder extends Seeder
         ]);
 
 
-
-
-
         CargasFamiliares::create([
             'name' => 'Más de 05 hijos',
             'puntaje' => 20
@@ -292,9 +289,9 @@ class ItemsFichaSeeder extends Seeder
             ]
         );
 
-        
 
-        
+
+        /*  
 
         $faker = Faker::create();
         for ($i = 0; $i < 10; $i++) {
@@ -555,6 +552,6 @@ class ItemsFichaSeeder extends Seeder
                     # code...
                     break;
             }
-        }
+        }*/
     }
 }

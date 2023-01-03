@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->id();
-            $table->integer('ciclo_academico');
+            $table->integer('ciclo_academico')->nullable();
             $table->date('fecha'); //Fecha en que registraron en físico los documentos
-            $table->text('observacion');
+            $table->text('observacion')->nullable();
             $table->integer('puntaje_total');
 
             $table->unsignedBigInteger('persona_id');
@@ -44,7 +44,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vivienda_id');
             $table->foreign('vivienda_id')->references('id')->on('viviendas');
 
-            $table->unsignedBigInteger('clasificacion_socioeconomica_id');
+            $table->unsignedBigInteger('clasificacion_socioeconomica_id')->nullable();
             $table->foreign('clasificacion_socioeconomica_id')->references('id')->on('clasificaciones_socioeconomicas');
 
             $table->unsignedBigInteger('credito_matriculado_id');

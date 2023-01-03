@@ -63,7 +63,7 @@ class CrearFicha extends Component
         'codigo' => 'required|string', //|unique:personas
         'escuela' => 'required|not_in:0',
         'direccion' => 'required',
-        'telefono' => 'numeric|required',
+        'telefono' => '',
         'item1' => 'required|not_in:0',
         'item2' => 'required|not_in:0',
         'item3' => 'required|not_in:0',

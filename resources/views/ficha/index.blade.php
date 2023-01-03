@@ -19,10 +19,10 @@
                             </h3>
                             <div>
                                 <div class="flex justify-end gap-2">
-                                    <a href="{{ route('ficha.informe') }}" type="button"
+                                    {{-- <a href="{{ route('ficha.informe') }}" type="button"
                                         class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-8 py-2.5 < mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
                                         <i class="fa-solid fa-chart-line"></i> Informe
-                                    </a>
+                                    </a> --}}
                                     <a href="{{ route('ficha.create') }}" type="button"
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 < mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                         <i class="fa-regular fa-file"></i> Nuevo
