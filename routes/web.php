@@ -14,15 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+])->group(
+    function () {
+        Route::get('/dashboard', function () {
+            return view('ficha.informe');
+        })->name('ficha.informe');
+        // Route::get('/salud', function () {
+        //     return view('salud.index');
+        // })->name('salud');
+    }
+);
+
+//Ficha Socioeconómica
+require __DIR__ . '/all_routes/ficha_socioeconomica/ficha.php';
+require __DIR__ . '/all_routes/users/users.php';
