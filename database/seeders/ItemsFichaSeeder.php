@@ -238,8 +238,24 @@ class ItemsFichaSeeder extends Seeder
             'nombre' => '2019-II'
         ]);
 
+        Semestres::create([
+            'nombre' => '2020-I'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2020-II'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2021-I'
+        ]);
+
+        Semestres::create([
+            'nombre' => '2021-II'
+        ]);
 
 
+        
         ClasificacionesSocioeconomicas::create([
             'nombre' => 'Pobre Extremo'
         ]);
