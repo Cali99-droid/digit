@@ -7,6 +7,9 @@ use App\Models\Ficha_Socioeconomica\Fichas;
 use App\Models\persona;
 use Illuminate\Http\Request;
 
+use App\Exports\FichasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class FichaController extends Controller
 {
     //
@@ -15,6 +18,10 @@ class FichaController extends Controller
         $persona = persona::findOrFail($id);
         //return $persona;
         return view('ficha.detalle_ficha', compact('persona'));
+    }
+
+    public function exportarExcel(){
+        return Excel::download(new FichasExport, 'fichassocioeconomicas.xlsx');
     }
 
     public function editar(persona $persona, Fichas $ficha){ //AHORA LO DE SUS SUBCOMPONENTES

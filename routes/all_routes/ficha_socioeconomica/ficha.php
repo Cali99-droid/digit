@@ -29,3 +29,5 @@ Route::get('/ficha-socioeconomica/create', function () {
 
 Route::get('/ficha-socioeconomica/editar/{persona}/{ficha}', [FichaController::class, 'editar'])->name('ficha.editar')->middleware(['auth', 'verified', 'digitador_ficha_socioeconomica']);
 Route::get('/ficha-socioeconomica/{id}', [FichaController::class, 'mostrarDetalleAlumno'])->middleware(['auth', 'verified', 'digitador_ficha_socioeconomica'])->name('ficha.detalle');
+
+Route::get('/export-excel', [FichaController::class, 'exportarExcel'])->middleware(['auth', 'verified', 'digitador_ficha_socioeconomica'])->name('ficha.exportar.excel');
