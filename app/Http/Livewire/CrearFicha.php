@@ -72,8 +72,8 @@ class CrearFicha extends Component
         'item6' => 'required|not_in:0',
         'item7' => 'required|not_in:0',
         'fecha' => 'required',
-        'aitem1' => 'required|not_in:0',
-        'aitem2' => 'required|not_in:0',
+        'aitem1' => '',
+        'aitem2' => '',
         'semestre' => 'required|not_in:0',
         'ciclo' => 'integer|between:1,12',
         'obs' => '',
@@ -91,7 +91,7 @@ class CrearFicha extends Component
 
         $datos = $this->validate();
 
-        // dd($datos);
+
         $this->ficha = true;
         //sacar el total de puntos por ev socioeconomica
         $item1 = Procedencias::find($datos['item1']);
@@ -104,8 +104,17 @@ class CrearFicha extends Component
         $this->totalEc = $item1->puntaje + $item2->puntaje + $item3->puntaje + $item4->puntaje + $item5->puntaje + $item6->puntaje + $item7->puntaje;
 
         //sacar puntaje total por ev academica
-        $aitem1 = CreditosMatriculados::find($datos['aitem1']);
-        $aitem2 = CreditosAprobados::find($datos['aitem2']);
+        $aitem1 = CreditosMatriculados::find($datos['aitem1']) ?? new CreditosMatriculados();
+        $aitem2 = CreditosAprobados::find($datos['aitem2']) ?? new CreditosAprobados();
+
+
+        // 
+        if ($aitem1 == null) {
+            $aitem1->puntaje = 0;
+        }
+        if ($aitem2 == null) {
+            $aitem2->puntaje = 0;
+        }
 
         $this->totalAca = $aitem1->puntaje + $aitem2->puntaje;
         // determinar la clasificacion
