@@ -78,8 +78,13 @@
                     </th>
 
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180) C @endif @if ($f->puntaje_total > 150
-                            && $f->puntaje_total <= 162) B @endif @if ($f->puntaje_total <= 150) A @endif </th>
+                        @if ($f->puntaje_total > 162 && $f->puntaje_total <= 180) C @endif 
+                        @if ($f->puntaje_total > 150
+                            && $f->puntaje_total <= 162) B 
+                        @endif 
+                        @if ($f->puntaje_total <= 150) A 
+                        @endif 
+                    </th>
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$f->created_at->diffForHumans() }}
                     </th>
