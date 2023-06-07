@@ -11,8 +11,8 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 ">
                 <div class=" overflow-hidden shadow-sm sm:rounded-lg mx-auto">
                     <div class="  bg-blue-700  ">
-                        <iframe title="DashFS_CP - EV. SOCIOECONOMICA" width="1024" height="612"
-                            src="https://app.powerbi.com/view?r=eyJrIjoiZDYxMDMwYzctOTM0Ni00MWMzLTkxYWUtNWVjM2M5ZWIyZGQ5IiwidCI6ImM1ZDIzYjA5LWFmMDEtNGFlYy1hYjc0LTdhNWQxZGEwMTA4NCJ9"
+                        <iframe title="DashFS_CP" width="1024" height="612"
+                            src="https://app.powerbi.com/reportEmbed?reportId=d61c32bd-e412-421b-8648-a18a7273ba00&autoAuth=true&ctid=c5d23b09-af01-4aec-ab74-7a5d1da01084"
                             frameborder="0" allowFullScreen="true"></iframe>
                     </div>
 
